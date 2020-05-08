@@ -19,7 +19,7 @@
 <body>
     <h1>PROBLEMATH</h1>
     <div class="contenido">
-        <form name="fProblems" id="fProblems" action="SearchProblems">
+        <form name="fProblems" id="fProblems" action="search">
             <fieldset>
                 <legend>Datos</legend>
                 <div class="field">

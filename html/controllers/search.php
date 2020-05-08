@@ -1,7 +1,7 @@
 
 <?php
 
-class SearchProblems extends Controller{
+class Search extends Controller{
 
     function __construct(){
         parent::__construct();
