@@ -1,11 +1,11 @@
 
 <?php
 
-class Search extends Controller{
+class ProblemFile extends Controller{
 
     function __construct(){
         parent::__construct();
-        $this->view->render('search/index');
+        $this->view->render('problemFile/index');
     }
 
     function saludo(){

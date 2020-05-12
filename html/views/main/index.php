@@ -69,9 +69,9 @@
         <div class="row content">
             <div class="col-sm-3 sidenav">
             </div>
-            <div class="col-sm-6 text-left">
-                <h1>PROBLEMATH</h1>
-                <div class="contenido">
+            <div class=" rounded col-sm-6 text-left">
+                <h1 class="text-center">PROBLEMATH</h1>
+                <div class="shadow border border-danger rounded p-4">
 
                     <form name="fProblems" id="fProblems" action="search">
 
@@ -98,7 +98,7 @@
 
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary" value="Buscar">Buscar</button>
+                                <button type="submit" class="btn btn-danger" value="Buscar">Buscar</button>
                             </div>
                         </div>
                     </form>
