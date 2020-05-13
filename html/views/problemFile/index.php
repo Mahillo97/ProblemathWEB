@@ -11,6 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+    <!-- Own JS -->
+    <script type="text/javascript" src="public/js/tabsCollapse.js"></script>
+    <script type="text/javascript" src="public/js/figuresLatex.js"></script>
+
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -35,9 +39,6 @@
             }
         };
     </script>
-
-    <!-- Own JS -->
-    <script type="text/javascript" src="public/js/tabsCollapse.js"></script>
 
     <link rel="icon" type="image/png" href="public/img/favicon.png">
 
@@ -160,31 +161,82 @@
 
                         <div class="tab-content">
                             <div class="tab-pane fade" id="solution1">
-                            <p class="mb-1 text-justify">
-                                For a positive integer $n$, let $\mathcal{T}$ be the regular tetrahedron in $\mathbb{R}^3$ with vertices $O\:(0, 0, 0)$, $A\:(0, n, n)$, $B\:(n, 0, n)$ and $C\:(n, n, 0)$.
-                                Show that the number $N$ of lattice points ($x$, $y$, $z$) (i.e., points with integer coordinates $x,y,z$) lying inside or on the boundary of $\mathcal{T}$ is
-                                \[
-                                N=\frac{1}{3}(n+1)(n^2+2n+3).
-                                \]
-                            </p>
+                                <p class="mb-1 text-justify tex">
+                                    First of all we draw the cube that contains the tetrahedron and the tetraedron.
+                                    \begin{figure}[htb]
+                                    \begin{center}
+                                    \includegraphics[width=0.4\textwidth]{Imagen-Ptos}
+                                    \end{center}
+                                    \end{figure}
+                                    This cube is divided in five pieces, four equal corners with the same number of points and the tetrahedron. Then we have $N=C-4Q$, where $C$ is the number of points lying inside or on the boundary of the cube and $Q$ is the number of points lying inside or on the outer faces of each one of the corners. We easily see that the number of points $C$ is $C=(n+1)^3$.
+
+                                    Now, to evaluate $Q$, we take the right triangles that appear when the corner is intersected with a plane of the form $z=n-1-i$, where $i=0,\dots,n-1$.
+                                    \begin{figure}[htb]
+                                    \begin{center}
+                                    \includegraphics[width=0.95\textwidth]{serie}
+                                    \end{center}
+                                    \end{figure}
+                                    The number of points in each plane is $\frac{(i+1)(i+2)}{2}$ and
+                                    \[
+                                    Q=\sum\limits_{i=0}^{n-1} \frac{(i+1)(i+2)}{2} = \frac{n(n+1)(n+2)}{6}.
+                                    \]
+                                    In this way, we have
+                                    \begin{align*}
+                                    N=C-4Q&=(n+1)^3-4 \frac{n(n+1)(n+2)}{6}\\&=\frac{n+1}{3}(3(n+1)^2 - 2n(n+2))=\frac{1}{3}(n+1)(n^2+2n+3).
+                                    \end{align*}
+                                </p>
                             </div>
                             <div class="tab-pane fade" id="solution2">
-                            <p class="mb-1 text-justify">
-                                For a positive integer $n$, let $\mathcal{T}$ be the regular tetrahedron in $\mathbb{R}^3$ with vertices $O\:(0, 0, 0)$, $A\:(0, n, n)$, $B\:(n, 0, n)$ and $C\:(n, n, 0)$.
-                                Show that the number $N$ of lattice points ($x$, $y$, $z$) (i.e., points with integer coordinates $x,y,z$) lying inside or on the boundary of $\mathcal{T}$ is
-                                \[
-                                N=\frac{1}{3}(n+1)(n^2+2n+3).
-                                \]
-                            </p>
+                                <p class="mb-1 text-justify tex">
+                                    First of all we draw the cube that contains the tetrahedron and the tetraedron.
+                                    \begin{figure}[htb]
+                                    \begin{center}
+                                    \includegraphics[width=0.4\textwidth]{Imagen-Ptos}
+                                    \end{center}
+                                    \end{figure}
+                                    This cube is divided in five pieces, four equal corners with the same number of points and the tetrahedron. Then we have $N=C-4Q$, where $C$ is the number of points lying inside or on the boundary of the cube and $Q$ is the number of points lying inside or on the outer faces of each one of the corners. We easily see that the number of points $C$ is $C=(n+1)^3$.
+
+                                    Now, to evaluate $Q$, we take the right triangles that appear when the corner is intersected with a plane of the form $z=n-1-i$, where $i=0,\dots,n-1$.
+                                    \begin{figure}[htb]
+                                    \begin{center}
+                                    \includegraphics[width=0.95\textwidth]{serie}
+                                    \end{center}
+                                    \end{figure}
+                                    The number of points in each plane is $\frac{(i+1)(i+2)}{2}$ and
+                                    \[
+                                    Q=\sum\limits_{i=0}^{n-1} \frac{(i+1)(i+2)}{2} = \frac{n(n+1)(n+2)}{6}.
+                                    \]
+                                    In this way, we have
+                                    \begin{align*}
+                                    N=C-4Q&=(n+1)^3-4 \frac{n(n+1)(n+2)}{6}\\&=\frac{n+1}{3}(3(n+1)^2 - 2n(n+2))=\frac{1}{3}(n+1)(n^2+2n+3).
+                                    \end{align*}
+                                </p>
                             </div>
                             <div class="tab-pane fade" id="solution3">
-                            <p class="mb-1 text-justify">
-                                For a positive integer $n$, let $\mathcal{T}$ be the regular tetrahedron in $\mathbb{R}^3$ with vertices $O\:(0, 0, 0)$, $A\:(0, n, n)$, $B\:(n, 0, n)$ and $C\:(n, n, 0)$.
-                                Show that the number $N$ of lattice points ($x$, $y$, $z$) (i.e., points with integer coordinates $x,y,z$) lying inside or on the boundary of $\mathcal{T}$ is
-                                \[
-                                N=\frac{1}{3}(n+1)(n^2+2n+3).
-                                \]
-                            </p>
+                                <p class="mb-1 text-justify tex">
+                                    First of all we draw the cube that contains the tetrahedron and the tetraedron.
+                                    \begin{figure}[htb]
+                                    \begin{center}
+                                    \includegraphics[width=0.4\textwidth]{Imagen-Ptos}
+                                    \end{center}
+                                    \end{figure}
+                                    This cube is divided in five pieces, four equal corners with the same number of points and the tetrahedron. Then we have $N=C-4Q$, where $C$ is the number of points lying inside or on the boundary of the cube and $Q$ is the number of points lying inside or on the outer faces of each one of the corners. We easily see that the number of points $C$ is $C=(n+1)^3$.
+
+                                    Now, to evaluate $Q$, we take the right triangles that appear when the corner is intersected with a plane of the form $z=n-1-i$, where $i=0,\dots,n-1$.
+                                    \begin{figure}[htb]
+                                    \begin{center}
+                                    \includegraphics[width=0.95\textwidth]{serie}
+                                    \end{center}
+                                    \end{figure}
+                                    The number of points in each plane is $\frac{(i+1)(i+2)}{2}$ and
+                                    \[
+                                    Q=\sum\limits_{i=0}^{n-1} \frac{(i+1)(i+2)}{2} = \frac{n(n+1)(n+2)}{6}.
+                                    \]
+                                    In this way, we have
+                                    \begin{align*}
+                                    N=C-4Q&=(n+1)^3-4 \frac{n(n+1)(n+2)}{6}\\&=\frac{n+1}{3}(3(n+1)^2 - 2n(n+2))=\frac{1}{3}(n+1)(n^2+2n+3).
+                                    \end{align*}
+                                </p>
                             </div>
                         </div>
                     </div>
