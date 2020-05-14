@@ -39,47 +39,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <a class="navbar-brand" href="#">
-            <img src="public/img/favicon.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            Problemath
-        </a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-
+    <?php require 'views/header.php'; ?>    
+    
     <div class="container-fluid text-center py-3 pt-md-5">
         <div class="row content">
             <div class="col-sm-3 sidenav">
@@ -87,121 +49,31 @@
             <div class="col-sm-6 text-left">
 
                 <h1>PROBLEM LIST</h1>
-
                 <div class="list-group">
-                    <a href="/problemFile?idProblem=1" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"> Problema 7</h5>
-                        </div>
-                        <div class="d-flex w-100">
-                            <div class="font-italic mr-2">Propuesto por: Oscar Ciaurri</div> <div class="font-italic mr-2">Publicado en: Gaceta Matematica </div>
-                        </div>
-                        <p class="mb-1">
-                            For a positive integer $n$, let $\mathcal{T}$ be the regular tetrahedron in $\mathbb{R}^3$ with vertices $O\:(0, 0, 0)$, $A\:(0, n, n)$, $B\:(n, 0, n)$ and $C\:(n, n, 0)$.
-                            Show that the number $N$ of lattice points ($x$, $y$, $z$) (i.e., points with integer coordinates $x,y,z$) lying inside or on the boundary of $\mathcal{T}$ is
-                            \[
-                            N=\frac{1}{3}(n+1)(n^2+2n+3).
-                            \]
-                        </p>
-                        <span class="badge badge-pill badge-danger">Análisis real</span>
-                        <span class="badge badge-pill badge-danger">Desigualdades</span>
-                        <span class="badge badge-pill badge-danger">Combinatoria</span>
-                    </a>
+                    <?php
+                    foreach ($_REQUEST['url'] as $problem) { ?>
 
-                    <a href="/problemFile?idProblem=1" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"> Problema 7</h5>
-                        </div>
-                        <div class="d-flex w-100">
-                            <div class="font-italic mr-2">Propuesto por: Oscar Ciaurri</div> <div class="font-italic mr-2">Publicado en: Gaceta Matematica </div>
-                        </div>
-                        <p class="mb-1">
-                            For a positive integer $n$, let $\mathcal{T}$ be the regular tetrahedron in $\mathbb{R}^3$ with vertices $O\:(0, 0, 0)$, $A\:(0, n, n)$, $B\:(n, 0, n)$ and $C\:(n, n, 0)$.
-                            Show that the number $N$ of lattice points ($x$, $y$, $z$) (i.e., points with integer coordinates $x,y,z$) lying inside or on the boundary of $\mathcal{T}$ is
-                            \[
-                            N=\frac{1}{3}(n+1)(n^2+2n+3).
-                            \]
-                        </p>
-                        <span class="badge badge-pill badge-danger">Análisis real</span>
-                        <span class="badge badge-pill badge-danger">Desigualdades</span>
-                        <span class="badge badge-pill badge-danger">Combinatoria</span>
-                    </a>
-
-                    <a href="/problemFile?idProblem=1" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"> Problema 7</h5>
-                        </div>
-                        <div class="d-flex w-100">
-                            <div class="font-italic mr-2">Propuesto por: Oscar Ciaurri</div> <div class="font-italic mr-2">Publicado en: Gaceta Matematica </div>
-                        </div>
-                        <p class="mb-1">
-                            For a positive integer $n$, let $\mathcal{T}$ be the regular tetrahedron in $\mathbb{R}^3$ with vertices $O\:(0, 0, 0)$, $A\:(0, n, n)$, $B\:(n, 0, n)$ and $C\:(n, n, 0)$.
-                            Show that the number $N$ of lattice points ($x$, $y$, $z$) (i.e., points with integer coordinates $x,y,z$) lying inside or on the boundary of $\mathcal{T}$ is
-                            \[
-                            N=\frac{1}{3}(n+1)(n^2+2n+3).
-                            \]
-                        </p>
-                        <span class="badge badge-pill badge-danger">Análisis real</span>
-                        <span class="badge badge-pill badge-danger">Desigualdades</span>
-                        <span class="badge badge-pill badge-danger">Combinatoria</span>
-                    </a>
-
-                    <a href="/problemFile?idProblem=1" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"> Problema 7</h5>
-                        </div>
-                        <div class="d-flex w-100">
-                            <div class="font-italic mr-2">Propuesto por: Oscar Ciaurri</div> <div class="font-italic mr-2">Publicado en: Gaceta Matematica </div>
-                        </div>
-                        <p class="mb-1">
-                            For a positive integer $n$, let $\mathcal{T}$ be the regular tetrahedron in $\mathbb{R}^3$ with vertices $O\:(0, 0, 0)$, $A\:(0, n, n)$, $B\:(n, 0, n)$ and $C\:(n, n, 0)$.
-                            Show that the number $N$ of lattice points ($x$, $y$, $z$) (i.e., points with integer coordinates $x,y,z$) lying inside or on the boundary of $\mathcal{T}$ is
-                            \[
-                            N=\frac{1}{3}(n+1)(n^2+2n+3).
-                            \]
-                        </p>
-                        <span class="badge badge-pill badge-danger">Análisis real</span>
-                        <span class="badge badge-pill badge-danger">Desigualdades</span>
-                        <span class="badge badge-pill badge-danger">Combinatoria</span>
-                    </a>
-
-                    <a href="/problemFile?idProblem=1" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"> Problema 7</h5>
-                        </div>
-                        <div class="d-flex w-100">
-                            <div class="font-italic mr-2">Propuesto por: Oscar Ciaurri</div> <div class="font-italic mr-2">Publicado en: Gaceta Matematica </div>
-                        </div>
-                        <p class="mb-1">
-                            For a positive integer $n$, let $\mathcal{T}$ be the regular tetrahedron in $\mathbb{R}^3$ with vertices $O\:(0, 0, 0)$, $A\:(0, n, n)$, $B\:(n, 0, n)$ and $C\:(n, n, 0)$.
-                            Show that the number $N$ of lattice points ($x$, $y$, $z$) (i.e., points with integer coordinates $x,y,z$) lying inside or on the boundary of $\mathcal{T}$ is
-                            \[
-                            N=\frac{1}{3}(n+1)(n^2+2n+3).
-                            \]
-                        </p>
-                        <span class="badge badge-pill badge-danger">Análisis real</span>
-                        <span class="badge badge-pill badge-danger">Desigualdades</span>
-                        <span class="badge badge-pill badge-danger">Combinatoria</span>
-                    </a>
-
-                    <a href="/problemFile?idProblem=1" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"> Problema 7</h5>
-                        </div>
-                        <div class="d-flex w-100">
-                            <div class="font-italic mr-2">Propuesto por: Oscar Ciaurri</div> <div class="font-italic mr-2">Publicado en: Gaceta Matematica </div>
-                        </div>
-                        <p class="mb-1">
-                            For a positive integer $n$, let $\mathcal{T}$ be the regular tetrahedron in $\mathbb{R}^3$ with vertices $O\:(0, 0, 0)$, $A\:(0, n, n)$, $B\:(n, 0, n)$ and $C\:(n, n, 0)$.
-                            Show that the number $N$ of lattice points ($x$, $y$, $z$) (i.e., points with integer coordinates $x,y,z$) lying inside or on the boundary of $\mathcal{T}$ is
-                            \[
-                            N=\frac{1}{3}(n+1)(n^2+2n+3).
-                            \]
-                        </p>
-                        <span class="badge badge-pill badge-danger">Análisis real</span>
-                        <span class="badge badge-pill badge-danger">Desigualdades</span>
-                        <span class="badge badge-pill badge-danger">Combinatoria</span>
-                    </a>
+                        <a href="/problemFile?idProblem=<?= $problem['id'] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"> Problema <?= $problem['id'] ?> </h5>
+                            </div>
+                            <div class="d-flex w-100">
+                                <div class="font-italic mr-2">Propuesto por: <?= $problem['proposer'] ?></div>
+                                <div class="font-italic mr-2">Publicado en: <?= $problem['magazine'] ?> </div>
+                            </div>
+                            <p class="mb-1">
+                                <?= $problem['tex'] ?>
+                            </p>
+                            <?php
+                            foreach ($problem['tags'] as $tag) { ?>
+                                <span class="badge badge-pill badge-danger"><?= $tag ?></span>
+                            <?php
+                            }
+                            ?>
+                        </a>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
             <div class="col-sm-3 sidenav">
