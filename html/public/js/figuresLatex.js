@@ -5,10 +5,9 @@ document.addEventListener("readystatechange", figuresLatex);
 function figuresLatex() {
     var list = document.getElementsByClassName("tex");
     for (var _p of list) {
-        console.log(_p.innerHTML);
-        var regEx = new RegExp(/\\begin{figure}((.|\n|\r)*?)\\includegraphics(\[(?:.*)\])?{(.*)}((.|\n|\r)*?)\\end{figure}/, "g");
-        `<img class="mx-auto d-block img-fluid" href="#" src=public\\img\\serie.svg>`
-        _p.innerHTML = _p.innerHTML.replace(regEx, `<img class="mt-3 mb-3 mx-auto d-block img-fluid" href="#" src=public\\img\\$4.svg>`);
+        var regEx = new RegExp(/\\begin{figure}((.|\n|\r)*?)\\includegraphics(\[(?:.*)\])?{(.*)\/([0-9]*)\.(.*)}((.|\n|\r)*?)\\end{figure}/, "g");
+        _p.innerHTML = _p.innerHTML.replace(regEx, `<img class="mt-3 mb-3 mx-auto d-block img-fluid" src="http://192.168.56.101:5000/v1/users/dependency/$5">`);
+        
         console.log(_p.innerHTML);
 
     }

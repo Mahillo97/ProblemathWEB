@@ -27,7 +27,7 @@ class Search extends Controller{
         $problemsJSON = file_get_contents($url);
         $problemList = json_decode($problemsJSON,true)['problems'];
         
-        $_REQUEST['url'] = $problemList;
+        $_REQUEST['problemList'] = $problemList;
         $this->view->render('search/index');
     }
 

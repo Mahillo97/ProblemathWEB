@@ -51,7 +51,7 @@
                 <h1>PROBLEM LIST</h1>
                 <div class="list-group">
                     <?php
-                    foreach ($_REQUEST['url'] as $problem) { ?>
+                    foreach ($_REQUEST['problemList'] as $problem) { ?>
 
                         <a href="/problemFile?idProblem=<?= $problem['id'] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between">
