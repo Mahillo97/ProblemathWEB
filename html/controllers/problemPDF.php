@@ -25,7 +25,7 @@ class ProblemPDF extends Controller
             ini_set('zlib.output_compression', '0');
             die($pdf);
         } else {
-            $controller = new RequestError();
+            $controller = new RequestError(400);
         }
     }
 }

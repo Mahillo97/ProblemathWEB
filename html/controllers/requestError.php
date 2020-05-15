@@ -4,11 +4,11 @@ require_once 'libs/controller.php';
 
 class RequestError extends Controller{
 
-    function __construct(){
+    function __construct($codeError){
         parent::__construct();
-        $this->view->mensaje = "Error genérico";
+        $this->view->code = $codeError;
         $this->view->render('requestError/index');
-        //echo "<p>Error al cargar recurso</p>";
+        
     }
 }
 

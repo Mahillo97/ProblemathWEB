@@ -20,7 +20,7 @@ class ProblemFile extends Controller
             $_REQUEST['problem'] = $problem;
             $this->view->render('problemFile/index');
         } else {
-            $controller = new RequestError();
+            $controller = new RequestError($headersArray['reponse_code']);
         }
     }
 }
