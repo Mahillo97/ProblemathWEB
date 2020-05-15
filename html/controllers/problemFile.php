@@ -23,11 +23,5 @@ class ProblemFile extends Controller
             $controller = new RequestError();
         }
     }
-
-    function saludo()
-    {
-        echo "<p>Ejecutaste el método Saludo</p>";
-    }
 }
-
 ?>

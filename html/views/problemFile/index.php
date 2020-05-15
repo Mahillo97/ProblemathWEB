@@ -80,12 +80,12 @@
                             <div class="col-sm-6 p-0">
                                 <div class="d-flex w-100 flex-column justify-content-between">
                                     <div class="mb-2">
-                                        <a href="http://192.168.56.101:5000/v1/users/problem/<?= $_REQUEST['problem']['id'] ?>/pdfState" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
+                                        <a target="_blank" rel="noopener noreferrer" href="/problemPDF?idProblem=<?= $_REQUEST['problem']['id'] ?>&type=State" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
                                             Descargar enunciado <i class="fa fa-file-pdf-o"></i>
                                         </a>
                                     </div>
                                     <div class="mb-2 ">
-                                        <a href="http://192.168.56.101:5000/v1/users/problem/<?= $_REQUEST['problem']['id'] ?>/pdfFull" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
+                                        <a target="_blank" rel="noopener noreferrer" href="/problemPDF?idProblem=<?= $_REQUEST['problem']['id'] ?>&type=Full" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
                                             Descargar enunciado y soluciones <i class="fa fa-file-pdf-o"></i>
                                         </a>
                                     </div>
@@ -109,7 +109,7 @@
                             <?php
                             foreach ($_REQUEST['problem']['solutions'] as $index => $solution) { ?>
                                 <li class="nav-item">
-                                    <a class="nav-link text-danger" data-toggle="tab" href="#solution" data-target="#solution<?= $index + 1 ?>">Solución <?= $index + 1 ?> </a>
+                                    <a class="nav-link text-danger" data-toggle="tab" href="#solution<?= $index + 1 ?>" data-target="#solution<?= $index + 1 ?>">Solución <?= $index + 1 ?> </a>
                                 </li>
                             <?php
                             }

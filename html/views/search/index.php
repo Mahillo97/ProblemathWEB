@@ -40,15 +40,78 @@
 
 <body>
 
-    <?php require 'views/header.php'; ?>    
-    
+    <?php require 'views/header.php'; ?>
+
     <div class="container-fluid text-center py-3 pt-md-5">
         <div class="row content">
             <div class="col-sm-3 sidenav">
             </div>
             <div class="col-sm-6 text-left">
+                <div class="d-flex w-100 justify-content-between">
+                    <h1>PROBLEM LIST</h1>
+                    <nav aria-label="..." class="d-flex align-items-end">
+                        <ul class="pagination justify-content-end mb-2">
+                            <?php
+                            if ($_REQUEST['pag'] > 1) { ?>
+                                <li class="page-item ">
+                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] - 1) ?>">Anterior</a>
+                                </li>
+                            <?php
+                            }
+                            ?>
 
-                <h1>PROBLEM LIST</h1>
+                            <?php
+                            if ($_REQUEST['pag'] > 2) { ?>
+                                <li class="page-item">
+                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] - 2) ?>"><?= $_REQUEST['pag'] - 2 ?></a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+
+
+                            <?php
+                            if ($_REQUEST['pag'] > 1) { ?>
+                                <li class="page-item">
+                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] - 1) ?>"><?= $_REQUEST['pag'] - 1 ?></a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+
+                            <li class="page-item ">
+                                <a class="page-link bg-danger text-white" href="<?= $_REQUEST['url'] . ($_REQUEST['pag']) ?>"><?= $_REQUEST['pag'] ?></a>
+                            </li>
+
+                            <?php
+                            if ($_REQUEST['pag'] < $_REQUEST['pages']) { ?>
+                                <li class="page-item">
+                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] + 1) ?>"><?= $_REQUEST['pag'] + 1 ?></a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+
+                            <?php
+                            if ($_REQUEST['pag'] < $_REQUEST['pages'] - 1) { ?>
+                                <li class="page-item">
+                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] + 2) ?>"><?= $_REQUEST['pag'] + 2 ?></a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+
+                            <?php
+                            if ($_REQUEST['pag'] < $_REQUEST['pages']) { ?>
+                                <li class="page-item">
+                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] + 1) ?>">Siguiente</a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    </nav>
+                </div>
                 <div class="list-group">
                     <?php
                     foreach ($_REQUEST['problemList'] as $problem) { ?>
