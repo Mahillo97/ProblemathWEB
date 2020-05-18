@@ -6,6 +6,7 @@ class Controller{
 
     function __construct(){
         $this->view = new View();
+        session_start();
     }
 }
 

@@ -42,7 +42,7 @@
                             <h2 class="text-danger"><i class="fa fa-warning fa-5x"></i></h2>
                         </div>
                         <div class="col-sm-8 text-center mt-auto mb-auto">
-                            <h2> Error <?= $this->code ?> </h2>
+                            <h2> Error <?= $_REQUEST['code'] ?> </h2>
                         </div>
                     </div>
                 </div>

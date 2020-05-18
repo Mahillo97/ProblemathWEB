@@ -1,5 +1,3 @@
-//Este script deberá ir dentro del controlador y ya no será un script
-
 document.addEventListener("readystatechange", figuresLatex);
 
 function figuresLatex() {

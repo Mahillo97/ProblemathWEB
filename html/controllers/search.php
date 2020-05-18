@@ -9,19 +9,22 @@ class Search extends Controller{
 
         $tamPag = 2;
 
-        //We get the values of the search
-        $tags= $_GET['tags'];
-        $prop = $_GET['prop'];
-        $mag = $_GET['mag'];
-
-        //If some of them are empty we set them as an empty string
-        if ($tags===null) {
+        //Check the params if they are set
+        if (isset($_GET['tags'])) {
+            $tags= $_GET['tags'];
+        }else{
             $tags='';
         }
-        if ($prop===null) {
+
+        if (isset($_GET['prop'])) {
+            $prop= $_GET['prop'];
+        }else{
             $prop='';
         }
-        if ($mag===null) {
+
+        if (isset($_GET['mag'])) {
+            $mag= $_GET['mag'];
+        }else{
             $mag='';
         }
 
@@ -31,14 +34,12 @@ class Search extends Controller{
         $problemList = json_decode($problemsJSON,true)['problems'];
         $pages = ceil(count($problemList)/$tamPag);
 
-        //We get the page that we want to show
-        $pag = $_GET['pag'];
-
-        //If the value is not value we set pag as 1
-        if ($pag===null) {
+        //We get the page that we want to show and if the value is not valid we set pag as 1
+        if (!isset($_GET['pag'])) {
             $pag=1;
         }else{
             try {
+                $pag = $_GET['pag'];
                 $pag = (int)$pag;
                 if($pag<1 || $pag>$pages){
                     $pag=1;

@@ -11,9 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+    <!-- Own JS -->
+    <script type="text/javascript" src="public/js/addProblem.js"></script>
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="public/css/problemath.css" > -->
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -115,10 +120,12 @@
                 <div class="list-group">
                     <?php
                     foreach ($_REQUEST['problemList'] as $problem) { ?>
-
                         <a href="/problemFile?idProblem=<?= $problem['id'] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1"> Problema <?= $problem['id'] ?> </h5>
+                                <div id="<?= $problem['id'] ?>" class="btn btn-outline-danger addProblem">
+                                    Añadir a hoja de problemas <i class="fa fa-plus"></i>
+                                </div>
                             </div>
                             <div class="d-flex w-100">
                                 <div class="font-italic mr-2">Propuesto por: <?= $problem['proposer'] ?></div>
