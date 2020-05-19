@@ -53,7 +53,7 @@
             </div>
             <div class="col-sm-6 text-left">
                 <div class="d-flex w-100 justify-content-between">
-                    <h1>PROBLEM LIST</h1>
+                    <h1>RESULTADO BÚSQUEDA</h1>
                     <nav aria-label="..." class="d-flex align-items-end">
                         <ul class="pagination justify-content-end mb-2">
                             <?php

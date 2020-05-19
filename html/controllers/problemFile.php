@@ -1,8 +1,6 @@
 
 <?php
 
-require_once 'libs/phpUtils.php';
-
 class ProblemFile extends Controller
 {
 
@@ -20,7 +18,8 @@ class ProblemFile extends Controller
             $_REQUEST['problem'] = $problem;
             $this->view->render('problemFile/index');
         } else {
-            $controller = new RequestError($headersArray['reponse_code']);
+            header("Location: requestError?code=" . $headersArray['reponse_code']);
+            die();
         }
     }
 }

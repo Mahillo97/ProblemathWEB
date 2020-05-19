@@ -1,6 +1,7 @@
 <?php
 
 require_once 'libs/view.php';
+require_once 'libs/phpUtils.php';
 
 class Controller{
 

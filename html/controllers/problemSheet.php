@@ -1,8 +1,6 @@
 
 <?php
 
-require_once 'libs/phpUtils.php';
-
 class ProblemSheet extends Controller
 {
 

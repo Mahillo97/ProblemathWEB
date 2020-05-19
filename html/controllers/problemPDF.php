@@ -1,8 +1,6 @@
 
 <?php
 
-require_once 'libs/phpUtils.php';
-
 class ProblemPDF extends Controller
 {
 
@@ -25,7 +23,8 @@ class ProblemPDF extends Controller
             ini_set('zlib.output_compression', '0');
             die($pdf);
         } else {
-            $controller = new RequestError(400);
+            header("Location: requestError?code=" . $headersArray['reponse_code']);
+            die();
         }
     }
 }

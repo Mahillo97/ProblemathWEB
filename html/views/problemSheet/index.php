@@ -102,12 +102,18 @@
                             }
                             ?>
                         </div>
-                        <div class="form-group row float-right mr-2 mt-3">
-                            <button class="btn btn-outline-danger btn-block h-100" name="action" type="submit" value="pdf">
-                                Descargar hoja de problemas <i class="fa fa-file-pdf-o"></i>
-                            </button>
+                        <div class="d-flex w-100 justify-content-between pt-3 pr-2 pl-2">
+                            <div>
+                                <a href="/" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
+                                    Buscar más problemas <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <button class="btn btn-outline-danger btn-block h-100" name="action" type="submit" value="pdf">
+                                    Descargar hoja de problemas <i class="fa fa-file-pdf-o"></i>
+                                </button>
+                            </div>
                         </div>
-
                     </form>
                 <?php
                 } else {
