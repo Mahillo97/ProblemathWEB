@@ -54,97 +54,113 @@
             <div class="col-sm-6 text-left">
                 <div class="d-flex w-100 justify-content-between">
                     <h1>RESULTADO BÚSQUEDA</h1>
-                    <nav aria-label="..." class="d-flex align-items-end">
-                        <ul class="pagination justify-content-end mb-2">
-                            <?php
-                            if ($_REQUEST['pag'] > 1) { ?>
+                    <?php if ($_REQUEST['pages'] > 0) { ?>
+                        <nav aria-label="..." class="d-flex align-items-end">
+                            <ul class="pagination justify-content-end mb-2">
+                                <?php
+                                if ($_SESSION['pag'] > 1) { ?>
+                                    <li class="page-item ">
+                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] - 1) ?>">Anterior</a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+
+                                <?php
+                                if ($_SESSION['pag'] > 2) { ?>
+                                    <li class="page-item">
+                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] - 2) ?>"><?= $_SESSION['pag'] - 2 ?></a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+
+
+                                <?php
+                                if ($_SESSION['pag'] > 1) { ?>
+                                    <li class="page-item">
+                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] - 1) ?>"><?= $_SESSION['pag'] - 1 ?></a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+
                                 <li class="page-item ">
-                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] - 1) ?>">Anterior</a>
+                                    <a class="page-link bg-danger text-white" href="<?= $_SESSION['url'] . ($_SESSION['pag']) ?>"><?= $_SESSION['pag'] ?></a>
                                 </li>
-                            <?php
-                            }
-                            ?>
 
-                            <?php
-                            if ($_REQUEST['pag'] > 2) { ?>
-                                <li class="page-item">
-                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] - 2) ?>"><?= $_REQUEST['pag'] - 2 ?></a>
-                                </li>
-                            <?php
-                            }
-                            ?>
+                                <?php
+                                if ($_SESSION['pag'] < $_REQUEST['pages']) { ?>
+                                    <li class="page-item">
+                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] + 1) ?>"><?= $_SESSION['pag'] + 1 ?></a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
 
+                                <?php
+                                if ($_SESSION['pag'] < $_REQUEST['pages'] - 1) { ?>
+                                    <li class="page-item">
+                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] + 2) ?>"><?= $_SESSION['pag'] + 2 ?></a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
 
-                            <?php
-                            if ($_REQUEST['pag'] > 1) { ?>
-                                <li class="page-item">
-                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] - 1) ?>"><?= $_REQUEST['pag'] - 1 ?></a>
-                                </li>
-                            <?php
-                            }
-                            ?>
-
-                            <li class="page-item ">
-                                <a class="page-link bg-danger text-white" href="<?= $_REQUEST['url'] . ($_REQUEST['pag']) ?>"><?= $_REQUEST['pag'] ?></a>
-                            </li>
-
-                            <?php
-                            if ($_REQUEST['pag'] < $_REQUEST['pages']) { ?>
-                                <li class="page-item">
-                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] + 1) ?>"><?= $_REQUEST['pag'] + 1 ?></a>
-                                </li>
-                            <?php
-                            }
-                            ?>
-
-                            <?php
-                            if ($_REQUEST['pag'] < $_REQUEST['pages'] - 1) { ?>
-                                <li class="page-item">
-                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] + 2) ?>"><?= $_REQUEST['pag'] + 2 ?></a>
-                                </li>
-                            <?php
-                            }
-                            ?>
-
-                            <?php
-                            if ($_REQUEST['pag'] < $_REQUEST['pages']) { ?>
-                                <li class="page-item">
-                                    <a class="page-link text-danger" href="<?= $_REQUEST['url'] . ($_REQUEST['pag'] + 1) ?>">Siguiente</a>
-                                </li>
-                            <?php
-                            }
-                            ?>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="list-group">
-                    <?php
-                    foreach ($_REQUEST['problemList'] as $problem) { ?>
-                        <a href="/problemFile?idProblem=<?= $problem['id'] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1"> Problema <?= $problem['id'] ?> </h5>
-                                <div id="<?= $problem['id'] ?>" class="btn btn-outline-danger addProblem">
-                                    Añadir a hoja de problemas <i class="fa fa-plus"></i>
-                                </div>
-                            </div>
-                            <div class="d-flex w-100">
-                                <div class="font-italic mr-2">Propuesto por: <?= $problem['proposer'] ?></div>
-                                <div class="font-italic mr-2">Publicado en: <?= $problem['magazine'] ?> </div>
-                            </div>
-                            <p class="mb-1">
-                                <?= $problem['tex'] ?>
-                            </p>
-                            <?php
-                            foreach ($problem['tags'] as $tag) { ?>
-                                <span class="badge badge-pill badge-danger"><?= $tag ?></span>
-                            <?php
-                            }
-                            ?>
-                        </a>
+                                <?php
+                                if ($_SESSION['pag'] < $_REQUEST['pages']) { ?>
+                                    <li class="page-item">
+                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] + 1) ?>">Siguiente</a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+                        </nav>
                     <?php
                     }
                     ?>
                 </div>
+                <?php if ($_REQUEST['pages'] > 0) { ?>
+
+                    <div class="list-group">
+                        <?php
+                        foreach ($_REQUEST['problemList'] as $problem) { ?>
+                            <a href="/problemFile?idProblem=<?= $problem['id'] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"> Problema <?= $problem['id'] ?> </h5>
+                                    <div id="<?= $problem['id'] ?>" class="btn btn-outline-danger addProblem">
+                                        Añadir a hoja de problemas <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="d-flex w-100">
+                                    <div class="font-italic mr-2">Propuesto por: <?= $problem['proposer'] ?></div>
+                                    <div class="font-italic mr-2">Publicado en: <?= $problem['magazine'] ?> </div>
+                                </div>
+                                <p class="mb-1">
+                                    <?= $problem['tex'] ?>
+                                </p>
+                                <?php
+                                foreach ($problem['tags'] as $tag) { ?>
+                                    <span class="badge badge-pill badge-danger"><?= $tag ?></span>
+                                <?php
+                                }
+                                ?>
+                            </a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                } else {
+                ?>
+
+                    <div class="shadow border rounded p-4">
+                        <p>No se encontró ningún problema para la búsqueda realizada.</p>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
             <div class="col-sm-3 sidenav">
             </div>

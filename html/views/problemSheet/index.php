@@ -104,7 +104,7 @@
                         </div>
                         <div class="d-flex w-100 justify-content-between pt-3 pr-2 pl-2">
                             <div>
-                                <a href="/" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
+                                <a href="<?=$_SESSION['url'] . ($_SESSION['pag'])?>" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
                                     Buscar más problemas <i class="fa fa-search"></i>
                                 </a>
                             </div>

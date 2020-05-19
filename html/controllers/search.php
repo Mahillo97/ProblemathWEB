@@ -47,27 +47,32 @@ class Search extends Controller
                 try {
                     $pag = $_GET['pag'];
                     $pag = (int) $pag;
-                    if ($pag >= 1 && $pag <= $pages) {
-                        //The pag is a value parameter
-                        $urlPeticionQuery = "http://192.168.56.101:5000/v1/users/problems?tags={$tags}&mag={$mag}&prop={$prop}&tamPag={$tamPag}&pag={$pag}";
-                        $problemsJSON = file_get_contents($urlPeticionQuery);
-                        $headersArray = parseHeaders($http_response_header);
-                        if ($headersArray['reponse_code'] == 200) {
-                            $problemList = json_decode($problemsJSON, true)['problems'];
-                            $_REQUEST['problemList'] = $problemList;
-                            $_REQUEST['pages'] = $pages;
-                            $_REQUEST['pag'] = $pag;
-                            $_REQUEST['url'] = $newUrl;
-                            $this->view->render('search/index');
+                    //Check if there is at least one page
+                    if ($pages > 0) {
+                        if ($pag >= 1 && $pag <= $pages) {
+                            //The pag is a value parameter
+                            $urlPeticionQuery = "http://192.168.56.101:5000/v1/users/problems?tags={$tags}&mag={$mag}&prop={$prop}&tamPag={$tamPag}&pag={$pag}";
+                            $problemsJSON = file_get_contents($urlPeticionQuery);
+                            $headersArray = parseHeaders($http_response_header);
+                            if ($headersArray['reponse_code'] == 200) {
+                                $problemList = json_decode($problemsJSON, true)['problems'];
+                                $_REQUEST['problemList'] = $problemList;
+                                $_SESSION['pag'] = $pag;
+                                $_SESSION['url'] = $newUrl;
+                            } else {
+                                header("Location: requestError?code=" . $headersArray['reponse_code']);
+                                die();
+                            }
                         } else {
-                            header("Location: requestError?code=" . $headersArray['reponse_code']);
+                            $pag = 1;
+                            header("Location: " . $newUrl . $pag);
                             die();
                         }
-                    } else {
-                        $pag = 1;
-                        header("Location: " . $newUrl . $pag);
-                        die();
                     }
+
+                    $_REQUEST['pages'] = $pages;
+                    $this->view->render('search/index');
+                    
                 } catch (TypeError $e) {
                     header("Location: " . $newUrl . $pag);
                     die();
