@@ -66,7 +66,7 @@
                         <ul id="sortable" class="list-group">
                             <?php
                             foreach ($_SESSION['problemSheet'] as $index => $problem) { ?>
-                                <li class="list-group-item flex-column align-items-start">
+                                <li id="<?= $index ?>" class="list-group-item flex-column align-items-start">
                                     <div class="row w-100">
                                         <div class="col-sm-1">
                                             <button type="submit" class="btn btn-outline-danger btn-block h-100" name="action" value="delete<?= $index ?>" form="fProblemSheet">
@@ -109,13 +109,18 @@
                             ?>
                         </ul>
                         <div class="d-flex w-100 justify-content-between pt-3 pr-2 pl-2">
-                            <div>
-                                <a href="<?= $_SESSION['url'] . ($_SESSION['pag']) ?>" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
+                            <div class="w-100">
+                                <a id="search" href="<?= $_SESSION['url'] . ($_SESSION['pag']) ?>" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
                                     Buscar más problemas <i class="fa fa-search"></i>
                                 </a>
                             </div>
-                            <div>
-                                <button class="btn btn-outline-danger btn-block h-100" name="action" type="submit" value="pdf">
+                            <div class="w-100">
+                                <button id="save" type="submit" class="btn btn-outline-danger btn-block h-100 disabled" name="action" value="save" form="fProblemSheet">
+                                    Guardar cambios <i class="fa fa-save"></i>
+                                </button>
+                            </div>
+                            <div class="w-100">
+                                <button id="pdf" class="btn btn-outline-danger btn-block h-100" name="action" type="submit" value="pdf">
                                     Descargar hoja de problemas <i class="fa fa-file-pdf-o"></i>
                                 </button>
                             </div>

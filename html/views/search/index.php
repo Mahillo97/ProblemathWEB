@@ -129,7 +129,7 @@
                             <a href="/problemFile?idProblem=<?= $problem['id'] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1"> Problema <?= $problem['id'] ?> </h5>
-                                    <?php if (!in_array($problem['id'], array_column($_SESSION['problemSheet'], 'id'))) { ?>
+                                    <?php if ((!isset($_SESSION['problemSheet'])) || (!in_array($problem['id'], array_column($_SESSION['problemSheet'], 'id')))) { ?>
                                         <button id="<?= $problem['id'] ?>" class="btn btn-outline-danger addProblem">
                                             Añadir a hoja de problemas <i class="fa fa-plus"></i>
                                         </button>
