@@ -39,6 +39,9 @@
         };
     </script>
 
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="public/css/problemath.css">
+
     <!-- Own JS -->
     <script type="text/javascript" src="public/js/sortable.js"></script>
 
@@ -62,7 +65,8 @@
                     <h1>HOJA DE PROBLEMAS</h1>
                 </div>
                 <?php if (!empty($_SESSION['problemSheet'])) { ?>
-                    <form name="fProblemSheet" id="fProblemSheet" action="problemSheet">
+                    <form name="fProblemSheet" id="fProblemSheet" action="problemSheet" method="POST">
+                        <input id="index" name="index" type="hidden" value="">
                         <ul id="sortable" class="list-group">
                             <?php
                             foreach ($_SESSION['problemSheet'] as $index => $problem) { ?>
@@ -94,12 +98,13 @@
                                                 <?php
                                                 foreach ($problem['solutions'] as $index => $solution) { ?>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox<?= $problem['id'] . $index ?>" value="solution<?= $solution['id'] ?>">
-                                                        <label class="form-check-label" for="inlineCheckbox1">Solución <?= $index ?></label>
+                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox<?= $problem['id'] . $index ?>" name="solutions<?= $problem['id'] ?>[]" value="<?= $index ?>" <?= ($solution['selected'] === true) ? "checked" : "" ?>>
+                                                        <label class="form-check-label" for="inlineCheckbox<?= $problem['id'] . $index ?>">Solución <?= $index + 1 ?></label>
                                                     </div>
                                                 <?php
                                                 }
                                                 ?>
+                                                <input type='hidden' value='-1' name="solutions<?= $problem['id'] ?>[]">
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +120,7 @@
                                 </a>
                             </div>
                             <div class="w-100">
-                                <button id="save" type="submit" class="btn btn-outline-danger btn-block h-100 disabled" name="action" value="save" form="fProblemSheet">
+                                <button id="save" type="type" class="btn btn-outline-danger btn-block h-100 disabled btn-no-pointer" name="action" value="save" form="fProblemSheet" disabled aria-disabled="true">
                                     Guardar cambios <i class="fa fa-save"></i>
                                 </button>
                             </div>

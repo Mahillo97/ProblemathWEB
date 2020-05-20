@@ -18,4 +18,15 @@ function parseHeaders( $headers )
     return $head;
 }
 
+function reorder(&$array, $index) 
+{ 
+    $auxArray=[];
+
+    foreach ($index as $value) {
+        $auxArray[] = $array[$value];
+    }
+
+    $array = $auxArray;
+} 
+
 ?>

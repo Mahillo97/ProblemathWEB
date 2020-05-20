@@ -16,6 +16,9 @@ class AddProblem extends Controller
             $headersArray = parseHeaders($http_response_header);
             if ($headersArray['reponse_code'] == 200) {
                 $problem = json_decode($problemJSON, true);
+                foreach ($problem['solutions'] as $index => $solution) {
+                    $problem['solutions'][$index]['selected']=false;
+                }
                 if (isset($_SESSION['problemSheet'])) {
                     $problemSheet = $_SESSION['problemSheet'];
                 } else {
@@ -26,7 +29,7 @@ class AddProblem extends Controller
                 header("Location: problemSheet");
                 die();
             } else {
-                header("Location: requestError?code=".$headersArray['reponse_code']);
+                header("Location: requestError?code=" . $headersArray['reponse_code']);
                 die();
             }
         } else {

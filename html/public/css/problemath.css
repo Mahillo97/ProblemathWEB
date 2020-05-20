@@ -1,7 +1,3 @@
-.proposer{
-    font-style: italic;
-}
-
-.magazine{
-    font-style: italic;
+.btn-no-pointer{
+    cursor: default !important;
 }
