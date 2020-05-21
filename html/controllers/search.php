@@ -11,7 +11,6 @@ class Search extends Controller
 
         $tamPag = 7;
 
-        //Check the params if they are set
         if (isset($_GET['tags'])) {
             $tags = $_GET['tags'];
         } else {

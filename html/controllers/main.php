@@ -7,10 +7,6 @@ class Main extends Controller{
         parent::__construct();
         $this->view->render('main/index');
     }
-
-    function saludo(){
-        echo "<p>Ejecutaste el método Saludo</p>";
-    }
 }
 
 ?>

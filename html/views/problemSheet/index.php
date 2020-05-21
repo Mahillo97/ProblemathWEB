@@ -125,7 +125,7 @@
                                 </button>
                             </div>
                             <div class="w-100">
-                                <button id="pdf" class="btn btn-outline-danger btn-block h-100" name="action" type="submit" value="pdf">
+                                <button id="pdf" class="btn btn-outline-danger btn-block h-100" name="action" type="submit" value="pdf" formaction="problemSheetPDF" formtarget="_blank">
                                     Descargar hoja de problemas <i class="fa fa-file-pdf-o"></i>
                                 </button>
                             </div>

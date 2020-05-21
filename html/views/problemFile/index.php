@@ -36,6 +36,9 @@
         };
     </script>
 
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="public/css/problemath.css">
+
     <!-- Own JS -->
     <script type="text/javascript" src="public/js/tabsCollapse.js"></script>
     <script type="text/javascript" src="public/js/figuresLatex.js"></script>
@@ -58,6 +61,19 @@
                     <div class="flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h3 class="mb-2"> Información general</h3>
+                            <?php if ((!isset($_SESSION['problemSheet'])) || (!in_array($_REQUEST['problem']['id'], array_column($_SESSION['problemSheet'], 'id')))) { ?>
+                                <a href="/addProblem?idProblem=<?= $_REQUEST['problem']['id'] ?>" class="btn btn-outline-danger mb-2" role="button" aria-pressed="true">
+                                    Añadir a hoja de problemas <i class="fa fa-plus"></i>
+                                </a>
+                            <?php
+                            } else {
+                            ?>
+                                <button id="<?= $_REQUEST['problem']['id'] ?>" disabled class="btn btn-danger mb-2 btn-no-pointer">
+                                    Problema ya añadido <i class="fa fa-file"></i>
+                                </button>
+                            <?php
+                            }
+                            ?>
                         </div>
                         <hr class="mt-0 mb-3" />
                         <div class="d-flex w-100 justify-content-between mb-4">
