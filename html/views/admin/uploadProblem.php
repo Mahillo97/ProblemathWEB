@@ -23,9 +23,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <!-- Own CSS-->
-
     <link href="/public/css/dashboard.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="public/img/favicon.png">
+    <link rel="icon" type="image/png" href="/public/img/favicon.png">
+
+    <!-- Own JS -->
+    <script type="text/javascript" src="/public/js/showFilename.js"></script>
+    <script type="text/javascript" src="/public/js/modifyFormSolutions.js"></script>
 
 </head>
 
@@ -46,14 +49,84 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Subir Problema</h1>
                     </div>
 
-                    <div class="h-100">
-                        <h1 class="mx-auto text-center">
-                            Site under construction. <i class="fas fa-hard-hat"></i>
-                        </h1>
+                    <div class="border border-black rounded mx-auto p-4" style="width: 70%;">
+
+                        <form name="fProblems" id="fProblems" action="search">
+
+                            <div class="row">
+                                <h2 class="h3 px-3 text-gray-800">Enunciado</h2>
+                            </div>
+                            <hr class="mt-0 mb-3">
+
+                            <div class="form-group row">
+                                <label for="tags" class="col-sm-2 col-form-label">Etiquetas</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="tags" class="form-control" id="tags">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="prop" class="col-sm-2 col-form-label">Proponente</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="prop" class="form-control" id="prop">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="mag" class="col-sm-2 col-form-label">Revista</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="mag" class="form-control" id="mag">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="statement" class="col-sm-2 col-form-label">Enunciado</label>
+                                <div class="col-sm-10">
+                                    <div class="custom-file">
+                                        <input type="file" name="statement" class="custom-file-input" id="statement" accept=".tex,.zip">
+                                        <label id="label_statement" class="custom-file-label" for="statement">Elija un documento deberá ser .tex o .zip</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <h2 class="h3 px-3 text-gray-800">Solución 1</h2>
+                            </div>
+                            <hr class="mt-0 mb-3">
+
+                            <div class="form-group row">
+                                <label for="solver1" class="col-sm-2 col-form-label">Resolutor</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="solver1" class="form-control" id="solver1">
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-4">
+                                <label for="solution1" class="col-sm-2 col-form-label">Solución</label>
+                                <div class="col-sm-10">
+                                    <div class="custom-file">
+                                        <input type="file" name="solution1" class="custom-file-input" id="solution1" accept=".tex,.zip">
+                                        <label id="label_solution1" class="custom-file-label" for="solution1">Elija un documento deberá ser .tex o .zip</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="buttonsRow" class="form-group row d-flex justify-content-between">
+                                <div class="px-3">
+                                    <a class="btn btn-primary" id="addSolution" role="button"> <span class=text-light>Añadir otra solución <i class="fa fa-plus"></i> </span> </a>
+                                    <a class="btn btn-primary disabled" id="removeSolution" role="button"> <span class=text-light>Eliminar última solución <i class="fa fa-minus"></i> </span> </a>
+                                </div>
+                                <div class="px-3">
+                                    <button type="submit" class="btn btn-primary" value="Buscar">Enviar</button>
+                                </div>
+                            </div>
+
+                        </form>
                     </div>
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -65,31 +138,6 @@
 
     </div>
     <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </body>
 
 </html>

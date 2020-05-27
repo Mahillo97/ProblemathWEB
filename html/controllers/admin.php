@@ -56,8 +56,8 @@ class Admin extends Controller
 
     function uploadProblem()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['user']) && isset($_POST['password'])) {
+        if (isset($_SESSION['admin']['user']) && isset($_SESSION['admin']['password'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 //We must ping the API REST with credentials
                 $user = $_POST['user'];
                 $password = $_POST['password'];
@@ -81,11 +81,11 @@ class Admin extends Controller
                     $this->view->render('admin/login');
                 }
             } else {
-                $_REQUEST['error'] = "Incluya las credenciales";
-                $this->view->render('admin/login');
+                $this->view->render('admin/uploadProblem');
             }
         } else {
-            $this->view->render('admin/uploadProblem');
+            header("Location: login");
+            die();
         }
     }
 
