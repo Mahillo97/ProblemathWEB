@@ -20,7 +20,7 @@
         </ul>
         <div>
             <a href="/admin/login" class="btn btn-outline-dark" role="button" aria-pressed="true">
-                Admin <i class="fa fa-user"></i>
+                Admin <i class="fas fa-user-shield"></i>
             </a>
         </div>
     </div>
