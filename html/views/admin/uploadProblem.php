@@ -51,10 +51,24 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Subir Problema</h1>
                     </div>
+                    <?php if (isset($_REQUEST['success'])) { ?>
+                        <div class="alert alert-success" role="alert">
+                            <?= $_REQUEST['success'] ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                    <?php if (isset($_REQUEST['error'])) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= $_REQUEST['error'] ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
 
                     <div class="border border-black rounded mx-auto p-4" style="width: 70%;">
 
-                        <form name="fProblems" id="fProblems" action="search">
+                        <form name="fProblems" id="fProblems" action="uploadProblem" method="POST" enctype="multipart/form-data">
 
                             <div class="row">
                                 <h2 class="h3 px-3 text-gray-800">Enunciado</h2>
@@ -86,7 +100,7 @@
                                 <label for="statement" class="col-sm-2 col-form-label">Enunciado</label>
                                 <div class="col-sm-10">
                                     <div class="custom-file">
-                                        <input type="file" name="statement" class="custom-file-input" id="statement" accept=".tex,.zip">
+                                        <input type="file" name="statement" class="custom-file-input" id="statement" accept=".tex,.zip" required>
                                         <label id="label_statement" class="custom-file-label" for="statement">Elija un documento deberá ser .tex o .zip</label>
                                     </div>
                                 </div>
@@ -108,7 +122,7 @@
                                 <label for="solution1" class="col-sm-2 col-form-label">Solución</label>
                                 <div class="col-sm-10">
                                     <div class="custom-file">
-                                        <input type="file" name="solution1" class="custom-file-input" id="solution1" accept=".tex,.zip">
+                                        <input type="file" name="solution1" class="custom-file-input" id="solution1" accept=".tex,.zip" required>
                                         <label id="label_solution1" class="custom-file-label" for="solution1">Elija un documento deberá ser .tex o .zip</label>
                                     </div>
                                 </div>

@@ -29,6 +29,11 @@ class App
                 $controller = new $url[0];
                 if (isset($url[1])) {
                     $controller->{$url[1]}();
+                }else{
+                    if($url[0]=='admin'){
+                        header("Location: /admin/index");
+                        die();
+                    }
                 }
             } else {
                 $controller = new RequestError(404);

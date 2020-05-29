@@ -20,6 +20,8 @@ function formSolutions() {
         form.insertBefore(newSolverDiv,buttonsRow);
         form.insertBefore(newFileDiv,buttonsRow);
 
+        showFilename(solutionId);
+
         if (numSolutions-1 == 1) {
             document.getElementById("removeSolution").classList.remove("disabled");
         }  
@@ -27,9 +29,16 @@ function formSolutions() {
 
     //We add the event for removing last solution
     var buttonRemove = document.getElementById('removeSolution');
-    buttonRemove.addEventListener("change", function (event) {
-        var output = document.getElementById('labelStatement');
-        output.innerHTML = event.target.files[0].name;
+    buttonRemove.addEventListener("click", function (event) {
+        var buttonsRow = document.getElementById('buttonsRow');
+        var  FileDiv= buttonsRow.previousSibling;
+        FileDiv.parentNode.removeChild(FileDiv);
+        var  SolverDiv= buttonsRow.previousSibling;
+        SolverDiv.parentNode.removeChild(SolverDiv);
+        var  Separator= buttonsRow.previousSibling;
+        Separator.parentNode.removeChild(Separator);
+        var  TitleDiv= buttonsRow.previousSibling;
+        TitleDiv.parentNode.removeChild(TitleDiv);
         numSolutions = numSolutions - 1;
         if (numSolutions == 1) {
             document.getElementById("removeSolution").classList.add("disabled");
@@ -112,6 +121,8 @@ function createFileDiv(numberSolution) {
     input.id=`solution${numberSolution}`;
     input.name=`solution${numberSolution}`;
     input.type="file";
+    input.accept=".tex,.zip";
+    input.required=true;
     divInner2.appendChild(input);
 
     var labelInner = document.createElement("label");
