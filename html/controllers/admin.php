@@ -16,7 +16,7 @@ class Admin extends Controller
                 //We must ping the API REST with credentials
                 $user = $_POST['user'];
                 $password = $_POST['password'];
-                $pingUrl = "http://192.168.56.101:5000/v1/ping";
+                $pingUrl = "http://127.0.0.1:5000/v1/ping";
                 $auth = base64_encode("{$user}:{$password}");
                 $header = array("Authorization: Basic $auth");
                 $opts = array('http' => array(
@@ -96,7 +96,7 @@ class Admin extends Controller
                     $curl = curl_init();
 
                     curl_setopt_array($curl, array(
-                        CURLOPT_URL => "192.168.56.101:5000/v1/admin/uploadProblem",
+                        CURLOPT_URL => "127.0.0.1:5000/v1/admin/uploadProblem",
                         CURLOPT_ENCODING => "",
                         CURLOPT_MAXREDIRS => 10,
                         CURLOPT_TIMEOUT => 0,

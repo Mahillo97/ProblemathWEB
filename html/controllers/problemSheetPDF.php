@@ -43,7 +43,7 @@ class ProblemSheetPDF extends Controller
                 $problemSheet[$index] = $problem;
             }
 
-            $urlbase = "http://192.168.56.101:5000/v1/users/getProblemSheet?";
+            $urlbase = "http://127.0.0.1:5000/v1/users/getProblemSheet?";
             $urlQueryString = "";
             $multipleProblems = false;
 
