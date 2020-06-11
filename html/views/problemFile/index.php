@@ -115,7 +115,7 @@
                         </div>
                         <hr class="mt-0 mb-3" />
                         <div class="d-flex w-100 justify-content-between mb-4">
-                            <p class="mb-1 text-justify">
+                            <p class="mb-1 w-100">
                                 <?= $_REQUEST['problem']['tex'] ?>
                             </p>
                         </div>
