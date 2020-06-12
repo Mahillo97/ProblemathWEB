@@ -43,6 +43,14 @@
         </a>
     </li>
 
+    <!-- Nav Item -->
+    <li class="nav-item">
+        <a class="nav-link" href="changePassword" aria-expanded="true">
+            <i class="fas fa-key"></i>
+            <span>Cambiar contraseña</span>
+        </a>
+    </li>
+
     <div class="mt-auto">
         <!-- Heading -->
         <div class="sidebar-heading">

@@ -115,8 +115,7 @@ class Admin extends Controller
                     // Comprobar si ocurrió un error
                     if (!$error) {
                         $_REQUEST['success'] = "El problema se subio correctamente";
-                        header("Location: uploadProblem");
-                        die();
+                        $this->view->render('admin/uploadProblem');
                     } else {
                         $_REQUEST['error'] = "El problema no se ha subido correctamente, verifique los documentos enviados.";
                         $this->view->render('admin/uploadProblem');
@@ -128,6 +127,126 @@ class Admin extends Controller
             } else {
                 $this->view->render('admin/uploadProblem');
             }
+        } else {
+            header("Location: login");
+            die();
+        }
+    }
+
+    function newAdmin()
+    {
+        if (isset($_SESSION['admin']['user']) && isset($_SESSION['admin']['password'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                //We must check if the username, password and repeat password have been written
+                if (isset($_POST['user']) && isset($_POST['pwd']) && isset($_POST['rpwd'])) {
+
+                    $newUsername = $_POST['user'];
+                    $newPwd = $_POST['pwd'];
+                    $newRpwd = $_POST['rpwd'];
+
+                    //We check if the passwords match
+                    if ($newPwd === $newRpwd) {
+
+                        //We get the session variables for the authentication
+                        $user = $_SESSION['admin']['user'];
+                        $password = $_SESSION['admin']['password'];
+                        $auth = base64_encode("{$user}:{$password}");
+
+                        //We create the petition to the API/REST
+                        $url = "http://127.0.0.1:5000/v1/admin/addUser";
+                        $header = array("Content-Type: application/x-www-form-urlencoded", "Authorization: Basic $auth");
+
+                        $data = array('user' => $newUsername, 'pwd' => $newPwd);
+                        $data = http_build_query($data);
+
+                        $opts = array('http' => array(
+                            'method' => 'POST',
+                            'header' => $header,
+                            'content' => $data
+                        ));
+
+                        $ctx = stream_context_create($opts);
+                        file_get_contents($url, false, $ctx);
+                        $headersArray = parseHeaders($http_response_header);
+
+                        if ($headersArray['reponse_code'] == 200) {
+                            $_REQUEST['success'] = "Se ha añadido correctamente el administrador en la base de datos";
+                            $this->view->render('admin/newAdmin');
+                        } else {
+                            $_REQUEST['error'] = "Ya existe un usuario en la base de datos con ese nombre";
+                            $this->view->render('admin/newAdmin');
+                        }
+                    } else {
+                        $_REQUEST['error'] = "Las contraseñas no coinciden";
+                        $this->view->render('admin/newAdmin');
+                    }
+                } else {
+                    $_REQUEST['error'] = "Debe rellenar los campos obligatorios";
+                    $this->view->render('admin/newAdmin');
+                }
+            } else {
+                $this->view->render('admin/newAdmin');
+            }
+        } else {
+            header("Location: login");
+            die();
+        }
+    }
+
+    function changePassword()
+    {
+        if (isset($_SESSION['admin']['user']) && isset($_SESSION['admin']['password'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                //We must check if the password, new password and repeat password have been written
+                if (isset($_POST['pwd']) && isset($_POST['npwd']) && isset($_POST['rpwd'])) {
+
+                    $oldPwd = $_POST['pwd'];
+                    $newPwd = $_POST['npwd'];
+                    $newRpwd = $_POST['rpwd'];
+
+                    //We check if the old password match
+                    if ($oldPwd === $_SESSION['admin']['password']) {
+                        if ($newPwd === $newRpwd) {
+
+                            //We get the session variables for the authentication
+                            $user = $_SESSION['admin']['user'];
+                            $password = $_SESSION['admin']['password'];
+                            $auth = base64_encode("{$user}:{$password}");
+
+                            //We create the petition to the API/REST
+                            $url = "http://127.0.0.1:5000/v1/admin/changePassword";
+                            $header = array("Content-Type: application/x-www-form-urlencoded", "Authorization: Basic $auth");
+
+                            $data = array('user' => $user, 'pwd' => $newPwd);
+                            $data = http_build_query($data);
+
+                            $opts = array('http' => array(
+                                'method' => 'POST',
+                                'header' => $header,
+                                'content' => $data
+                            ));
+
+                            $ctx = stream_context_create($opts);
+                            file_get_contents($url, false, $ctx);
+                            $headersArray = parseHeaders($http_response_header);
+
+                            if ($headersArray['reponse_code'] == 200) {
+                                $_REQUEST['success'] = "Se ha modificado correctamente su contraseña";
+                                $_SESSION['admin']['password'] = $newPwd;
+                            } else {
+                                $_REQUEST['error'] = "No se ha podido cambiar su contraseña.";
+                            }
+                        } else {
+                            $_REQUEST['error'] = 'Las nuevas contraseñas no coinciden.';
+                        }
+                    } else {
+                        $_REQUEST['error'] = 'La antigua contraseña es incorrecta.';
+                    }
+                } else {
+                    $_REQUEST['error'] = "Debe rellenar los campos obligatorios";
+                }
+            }
+            $this->view->render('admin/changePassword');
         } else {
             header("Location: login");
             die();
