@@ -16,7 +16,7 @@ class Admin extends Controller
                 //We must ping the API REST with credentials
                 $user = $_POST['user'];
                 $password = $_POST['password'];
-                $pingUrl = "http://".constant('IP_API_REST')."/v1/ping";
+                $pingUrl = "http://" . constant('IP_API_REST') . "/v1/ping";
                 $auth = base64_encode("{$user}:{$password}");
                 $header = array("Authorization: Basic $auth");
                 $opts = array('http' => array(
@@ -96,7 +96,7 @@ class Admin extends Controller
                     $curl = curl_init();
 
                     curl_setopt_array($curl, array(
-                        CURLOPT_URL => "".constant('IP_API_REST')."/v1/admin/uploadProblem",
+                        CURLOPT_URL => "" . constant('IP_API_REST') . "/v1/admin/uploadProblem",
                         CURLOPT_ENCODING => "",
                         CURLOPT_MAXREDIRS => 10,
                         CURLOPT_TIMEOUT => 0,
@@ -109,23 +109,83 @@ class Admin extends Controller
                         )
                     ));
 
-                    $response = curl_exec($curl);
-                    $error = curl_errno($curl);
-                    curl_close($curl);
-                    // Comprobar si ocurrió un error
-                    if (!$error) {
-                        $_REQUEST['success'] = "El problema se subio correctamente";
-                        $this->view->render('admin/uploadProblem');
-                    } else {
-                        $_REQUEST['error'] = "El problema no se ha subido correctamente, verifique los documentos enviados.";
-                        $this->view->render('admin/uploadProblem');
+                    curl_exec($curl);
+                    // Comprueba el código de estado HTTP
+                    if (!curl_errno($curl)) {
+                        switch ($http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE)) {
+                            case 200:  # OK
+                                $_REQUEST['success'] = "El problema se subio correctamente";
+                                $this->view->render('admin/uploadProblem');
+                                break;
+                            default:
+                                $_REQUEST['error'] = "El problema no se ha subido correctamente, verifique los documentos enviados.";
+                                $this->view->render('admin/uploadProblem');
+                        }
                     }
+                    curl_close($curl);
                 } else {
                     $_REQUEST['error'] = "Incluya un enunciado y una solución";
                     $this->view->render('admin/uploadProblem');
                 }
             } else {
                 $this->view->render('admin/uploadProblem');
+            }
+        } else {
+            header("Location: login");
+            die();
+        }
+    }
+
+    function removeProblem()
+    {
+        if (isset($_SESSION['admin']['user']) && isset($_SESSION['admin']['password'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                //We must check if the problem id has been set
+                if (isset($_POST['problemId'])) {
+
+                    $problemID = intval($_POST['problemId']);
+
+                    //We check if the id is a positive value
+                    if ($problemID > 0) {
+
+                        //We get the session variables for the authentication
+                        $user = $_SESSION['admin']['user'];
+                        $password = $_SESSION['admin']['password'];
+                        $auth = base64_encode("{$user}:{$password}");
+
+                        //We create the petition to the API/REST
+                        $url = "http://" . constant('IP_API_REST') . "/v1/admin/removeProblem/$problemID";
+                        $header = array("Content-Type: application/x-www-form-urlencoded", "Authorization: Basic $auth");
+
+                        $opts = array('http' => array(
+                            'method' => 'POST',
+                            'header' => $header,
+                        ));
+
+                        $ctx = stream_context_create($opts);
+                        file_get_contents($url, false, $ctx);
+                        $headersArray = parseHeaders($http_response_header);
+
+                        if ($headersArray['reponse_code'] == 200) {
+                            $_REQUEST['success'] = "Se ha borrado correctamente el problema de la base de datos";
+                            $this->view->render('admin/removeProblem');
+                        } elseif ($headersArray['reponse_code'] == 404) {
+                            $_REQUEST['error'] = "No existe un problema con ese ID";
+                            $this->view->render('admin/removeProblem');
+                        } else {
+                            $_REQUEST['error'] = "Ha surgido un error inesperado";
+                            $this->view->render('admin/removeProblem');
+                        }
+                    } else {
+                        $_REQUEST['error'] = "El id del problema debe de ser un entero mayor que 0";
+                        $this->view->render('admin/removeProblem');
+                    }
+                } else {
+                    $_REQUEST['error'] = "Debe rellenar los campos obligatorios";
+                    $this->view->render('admin/removeProblem');
+                }
+            } else {
+                $this->view->render('admin/removeProblem');
             }
         } else {
             header("Location: login");
@@ -153,7 +213,7 @@ class Admin extends Controller
                         $auth = base64_encode("{$user}:{$password}");
 
                         //We create the petition to the API/REST
-                        $url = "http://".constant('IP_API_REST')."/v1/admin/addUser";
+                        $url = "http://" . constant('IP_API_REST') . "/v1/admin/addUser";
                         $header = array("Content-Type: application/x-www-form-urlencoded", "Authorization: Basic $auth");
 
                         $data = array('user' => $newUsername, 'pwd' => $newPwd);
@@ -214,7 +274,7 @@ class Admin extends Controller
                             $auth = base64_encode("{$user}:{$password}");
 
                             //We create the petition to the API/REST
-                            $url = "http://".constant('IP_API_REST')."/v1/admin/changePassword";
+                            $url = "http://" . constant('IP_API_REST') . "/v1/admin/changePassword";
                             $header = array("Content-Type: application/x-www-form-urlencoded", "Authorization: Basic $auth");
 
                             $data = array('user' => $user, 'pwd' => $newPwd);

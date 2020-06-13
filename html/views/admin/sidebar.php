@@ -27,6 +27,14 @@
         </a>
     </li>
 
+    <!-- Nav Item -->
+    <li class="nav-item">
+        <a class="nav-link" href="removeProblem" aria-expanded="true">
+            <i class="fas fa-trash-alt"></i>
+            <span>Borrar problema</span>
+        </a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
