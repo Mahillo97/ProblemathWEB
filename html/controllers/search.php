@@ -29,8 +29,8 @@ class Search extends Controller
             $mag = '';
         }
 
-        $urlPeticionSize = "http://".constant('IP_API_REST')."/v1/users/problems/size?tags={$tags}&mag={$mag}&prop={$prop}";
-        $newUrl = "search?tags={$tags}&prop={$prop}&mag={$mag}&pag=";
+        $urlPeticionSize = "http://".constant('IP_API_REST')."/v1/users/problems/size?tags=".urlencode($tags)."&mag=".urlencode($mag)."&prop=".urlencode($prop);
+        $newUrl = "search?tags=".urlencode($tags)."&mag=".urlencode($mag)."&prop=".urlencode($prop)."&pag=";
         $sizeJSON = file_get_contents($urlPeticionSize);
         $headersArray = parseHeaders($http_response_header);
         if ($headersArray['reponse_code'] == 200) {
@@ -50,7 +50,7 @@ class Search extends Controller
                     if ($pages > 0) {
                         if ($pag >= 1 && $pag <= $pages) {
                             //The pag is a value parameter
-                            $urlPeticionQuery = "http://".constant('IP_API_REST')."/v1/users/problems?tags={$tags}&mag={$mag}&prop={$prop}&tamPag={$tamPag}&pag={$pag}";
+                            $urlPeticionQuery = "http://".constant('IP_API_REST')."/v1/users/problems?tags=".urlencode($tags)."&mag=".urlencode($mag)."&prop=".urlencode($prop)."&tamPag=".urlencode($tamPag)."&pag=".urlencode($pag);
                             $problemsJSON = file_get_contents($urlPeticionQuery);
                             $headersArray = parseHeaders($http_response_header);
                             if ($headersArray['reponse_code'] == 200) {
@@ -59,7 +59,7 @@ class Search extends Controller
                                 $_SESSION['pag'] = $pag;
                                 $_SESSION['url'] = $newUrl;
                             } else {
-                                header("Location: requestError?code=" . $headersArray['reponse_code']);
+                                header("Location: requestError?code=" . urlencode($headersArray['reponse_code']));
                                 die();
                             }
                         } else {
@@ -78,7 +78,7 @@ class Search extends Controller
                 }
             }
         } else {
-            header("Location: requestError?code=" . $headersArray['reponse_code']);
+            header("Location: requestError?code=" . urlencode($headersArray['reponse_code']));
             die();
         }
     }

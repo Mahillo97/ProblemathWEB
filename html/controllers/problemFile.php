@@ -18,7 +18,7 @@ class ProblemFile extends Controller
             $_REQUEST['problem'] = $problem;
             $this->view->render('problemFile/index');
         } else {
-            header("Location: requestError?code=" . $headersArray['reponse_code']);
+            header("Location: requestError?code=" . urlencode($headersArray['reponse_code']));
             die();
         }
     }

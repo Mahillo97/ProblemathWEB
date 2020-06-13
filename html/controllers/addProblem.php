@@ -29,7 +29,7 @@ class AddProblem extends Controller
                 header("Location: problemSheet");
                 die();
             } else {
-                header("Location: requestError?code=" . $headersArray['reponse_code']);
+                header("Location: requestError?code=" . urlencode($headersArray['reponse_code']));
                 die();
             }
         } else {

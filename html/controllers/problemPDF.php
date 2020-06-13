@@ -23,7 +23,7 @@ class ProblemPDF extends Controller
             ini_set('zlib.output_compression', '0');
             die($pdf);
         } else {
-            header("Location: requestError?code=" . $headersArray['reponse_code']);
+            header("Location: requestError?code=" . urlencode($headersArray['reponse_code']));
             die();
         }
     }
