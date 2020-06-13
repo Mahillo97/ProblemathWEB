@@ -11,10 +11,16 @@ class Search extends Controller
 
         $tamPag = 7;
 
-        if (isset($_GET['tags'])) {
-            $tags = $_GET['tags'];
+        if (isset($_GET['auxTags'])) {
+            $tags = $_GET['auxTags'];
         } else {
             $tags = '';
+        }
+
+        if (isset($_GET['tags'])) {
+            $tags = $_GET['tags'] . $tags;
+        } else {
+            $tags = $tags . '';
         }
 
         if (isset($_GET['prop'])) {
