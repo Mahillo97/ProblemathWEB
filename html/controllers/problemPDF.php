@@ -11,7 +11,7 @@ class ProblemPDF extends Controller
         //We get the id of the problem
         $idProblem = $_GET['idProblem'];
         $type = $_GET['type'];
-        $url = "http://".constant('IP_API_REST').":5000/v1/users/problem/{$idProblem}/pdf{$type}";
+        $url = "http://".constant('IP_API_REST')."/v1/users/problem/{$idProblem}/pdf{$type}";
         $pdf = file_get_contents($url);
         $headersArray = parseHeaders($http_response_header);
         if ($headersArray['reponse_code'] == 200) {

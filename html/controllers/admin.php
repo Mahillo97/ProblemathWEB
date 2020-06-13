@@ -16,7 +16,7 @@ class Admin extends Controller
                 //We must ping the API REST with credentials
                 $user = $_POST['user'];
                 $password = $_POST['password'];
-                $pingUrl = "http://".constant('IP_API_REST').":5000/v1/ping";
+                $pingUrl = "http://".constant('IP_API_REST')."/v1/ping";
                 $auth = base64_encode("{$user}:{$password}");
                 $header = array("Authorization: Basic $auth");
                 $opts = array('http' => array(
@@ -96,7 +96,7 @@ class Admin extends Controller
                     $curl = curl_init();
 
                     curl_setopt_array($curl, array(
-                        CURLOPT_URL => "".constant('IP_API_REST').":5000/v1/admin/uploadProblem",
+                        CURLOPT_URL => "".constant('IP_API_REST')."/v1/admin/uploadProblem",
                         CURLOPT_ENCODING => "",
                         CURLOPT_MAXREDIRS => 10,
                         CURLOPT_TIMEOUT => 0,
@@ -153,7 +153,7 @@ class Admin extends Controller
                         $auth = base64_encode("{$user}:{$password}");
 
                         //We create the petition to the API/REST
-                        $url = "http://".constant('IP_API_REST').":5000/v1/admin/addUser";
+                        $url = "http://".constant('IP_API_REST')."/v1/admin/addUser";
                         $header = array("Content-Type: application/x-www-form-urlencoded", "Authorization: Basic $auth");
 
                         $data = array('user' => $newUsername, 'pwd' => $newPwd);
@@ -214,7 +214,7 @@ class Admin extends Controller
                             $auth = base64_encode("{$user}:{$password}");
 
                             //We create the petition to the API/REST
-                            $url = "http://".constant('IP_API_REST').":5000/v1/admin/changePassword";
+                            $url = "http://".constant('IP_API_REST')."/v1/admin/changePassword";
                             $header = array("Content-Type: application/x-www-form-urlencoded", "Authorization: Basic $auth");
 
                             $data = array('user' => $user, 'pwd' => $newPwd);

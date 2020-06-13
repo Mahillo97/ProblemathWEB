@@ -43,7 +43,7 @@ class ProblemSheetPDF extends Controller
                 $problemSheet[$index] = $problem;
             }
 
-            $urlbase = "http://".constant('IP_API_REST').":5000/v1/users/getProblemSheet?";
+            $urlbase = "http://".constant('IP_API_REST')."/v1/users/getProblemSheet?";
             $urlQueryString = "";
             $multipleProblems = false;
 

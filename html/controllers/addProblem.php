@@ -11,7 +11,7 @@ class AddProblem extends Controller
         //We get the id of the problem
         if (isset($_GET['idProblem'])) {
             $idProblem = $_GET['idProblem'];
-            $url = "http://".constant('IP_API_REST').":5000/v1/users/problem/{$idProblem}";
+            $url = "http://".constant('IP_API_REST')."/v1/users/problem/{$idProblem}";
             $problemJSON = file_get_contents($url);
             $headersArray = parseHeaders($http_response_header);
             if ($headersArray['reponse_code'] == 200) {
