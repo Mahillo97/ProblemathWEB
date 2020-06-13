@@ -29,7 +29,7 @@ class Search extends Controller
             $mag = '';
         }
 
-        $urlPeticionSize = "http://127.0.0.1:5000/v1/users/problems/size?tags={$tags}&mag={$mag}&prop={$prop}";
+        $urlPeticionSize = "http://".constant('IP_API_REST').":5000/v1/users/problems/size?tags={$tags}&mag={$mag}&prop={$prop}";
         $newUrl = "search?tags={$tags}&prop={$prop}&mag={$mag}&pag=";
         $sizeJSON = file_get_contents($urlPeticionSize);
         $headersArray = parseHeaders($http_response_header);
@@ -50,7 +50,7 @@ class Search extends Controller
                     if ($pages > 0) {
                         if ($pag >= 1 && $pag <= $pages) {
                             //The pag is a value parameter
-                            $urlPeticionQuery = "http://127.0.0.1:5000/v1/users/problems?tags={$tags}&mag={$mag}&prop={$prop}&tamPag={$tamPag}&pag={$pag}";
+                            $urlPeticionQuery = "http://".constant('IP_API_REST').":5000/v1/users/problems?tags={$tags}&mag={$mag}&prop={$prop}&tamPag={$tamPag}&pag={$pag}";
                             $problemsJSON = file_get_contents($urlPeticionQuery);
                             $headersArray = parseHeaders($http_response_header);
                             if ($headersArray['reponse_code'] == 200) {
