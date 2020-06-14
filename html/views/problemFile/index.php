@@ -33,10 +33,14 @@
                     ['$', '$'],
                     ['\\(', '\\)']
                 ]
-                
-            }   
+            }
         };
     </script>
+
+    <!--TikzScripts -->
+
+    <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
+    <script src="http://tikzjax.com/v1/tikzjax.js"></script>
 
     <!-- Own CSS -->
     <link rel="stylesheet" href="public/css/problemath.css">
@@ -115,7 +119,7 @@
                         </div>
                         <hr class="mt-0 mb-3" />
                         <div class="d-flex w-100 justify-content-between mb-4">
-                            <p class="mb-1 w-100">
+                            <p class="mb-1 w-100 tex">
                                 <?= $_REQUEST['problem']['tex'] ?>
                             </p>
                         </div>

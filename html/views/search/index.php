@@ -38,6 +38,7 @@
 
     <!-- Own JS -->
     <script type="text/javascript" src="public/js/addProblem.js"></script>
+    <script type="text/javascript" src="public/js/figuresLatex.js"></script>
 
     <link rel="icon" type="image/png" href="public/img/favicon.png">
 
@@ -147,7 +148,7 @@
                                     <div class="font-italic mr-2">Propuesto por: <?= $problem['proposer'] ?></div>
                                     <div class="font-italic mr-2">Publicado en: <?= $problem['magazine'] ?> </div>
                                 </div>
-                                <p class="mb-1">
+                                <p class="mb-1 tex">
                                     <?= $problem['tex'] ?>
                                 </p>
                                 <?php
