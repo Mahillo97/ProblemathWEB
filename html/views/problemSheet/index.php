@@ -99,7 +99,7 @@
                                             <div class="d-flex w-100">
                                                 <?php
                                                 foreach ($problem['solutions'] as $index => $solution) { ?>
-                                                    <div class="custom-control custom-switch">
+                                                    <div class="custom-control custom-switch mr-3">
                                                         <input class="custom-control-input" type="checkbox" id="inlineCheckbox<?= $problem['id'] . $index ?>" name="solutions<?= $problem['id'] ?>[]" value="<?= $index ?>" <?= ($solution['selected'] === true) ? "checked" : "" ?>>
                                                         <label class="custom-control-label" for="inlineCheckbox<?= $problem['id'] . $index ?>">Solución <?= $index + 1 ?></label>
                                                     </div>
