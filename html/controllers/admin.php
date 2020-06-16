@@ -75,7 +75,9 @@ class Admin extends Controller
 
                     //We get the variables that we might send and create the array we must send
                     $petitionArray = [];
-                    $petitionArray['tags'] = isset($_POST['tags']) ? trim($_POST['tags']) : '';
+                    $tags = isset($_POST['auxTags']) ? preg_replace('/\s*,\s*/', ',',trim($_POST['auxTags'])) : '';
+                    $tags = isset($_POST['tags']) ? preg_replace('/\s*,\s*/', ',',trim($_POST['tags'])) . $tags : $tags . '';
+                    $petitionArray['tags'] = $tags;
                     $petitionArray['prop'] = isset($_POST['prop']) ? trim($_POST['prop']) : '';
                     $petitionArray['mag'] = isset($_POST['mag']) ? trim($_POST['mag']) : '';
 

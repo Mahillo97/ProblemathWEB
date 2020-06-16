@@ -11,29 +11,10 @@ class Search extends Controller
 
         $tamPag = 7;
 
-        if (isset($_GET['auxTags'])) {
-            $tags = $_GET['auxTags'];
-        } else {
-            $tags = '';
-        }
-
-        if (isset($_GET['tags'])) {
-            $tags = $_GET['tags'] . $tags;
-        } else {
-            $tags = $tags . '';
-        }
-
-        if (isset($_GET['prop'])) {
-            $prop = $_GET['prop'];
-        } else {
-            $prop = '';
-        }
-
-        if (isset($_GET['mag'])) {
-            $mag = $_GET['mag'];
-        } else {
-            $mag = '';
-        }
+        $tags = isset($_GET['auxTags']) ? preg_replace('/\s*,\s*/', ',',trim($_GET['auxTags'])) : '';
+        $tags = isset($_GET['tags']) ? preg_replace('/\s*,\s*/', ',',trim($_GET['tags'])) . $tags : $tags . '';
+        $prop = isset($_GET['prop']) ? trim($_GET['prop']) : '';
+        $mag = isset($_POST['mag']) ? trim($_POST['mag']) : '';
 
         $urlPeticionSize = "http://".constant('IP_API_REST')."/v1/users/problems/size?tags=".urlencode($tags)."&mag=".urlencode($mag)."&prop=".urlencode($prop);
         $newUrl = "search?tags=".urlencode($tags)."&mag=".urlencode($mag)."&prop=".urlencode($prop)."&pag=";

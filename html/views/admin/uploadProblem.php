@@ -29,6 +29,7 @@
     <!-- Own JS -->
     <script type="text/javascript" src="/public/js/showFilename.js"></script>
     <script type="text/javascript" src="/public/js/modifyFormSolutions.js"></script>
+    <script type="text/javascript" src="/public/js/addTags.js"></script>
 
 </head>
 
@@ -76,9 +77,14 @@
                             <hr class="mt-0 mb-3">
 
                             <div class="form-group row">
-                                <label for="tags" class="col-sm-2 col-form-label">Etiquetas</label>
+                                <label for="auxTags" class="col-sm-2 col-form-label">Etiquetas</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="tags" class="form-control" id="tags">
+                                    <input type="text" name="auxTags" class="form-control" id="auxTags">
+                                    <input type="hidden" name="tags" class="form-control">
+                                    <div class="d-flex w-100 container">
+                                        <div id="tagList" class="row">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
