@@ -322,9 +322,8 @@ class Admin extends Controller
 
     function exit()
     {
-        if (isset($_SESSION['user']) && isset($_SESSION['password'])) {
-            unset($_SESSION['user']);
-            unset($_SESSION['password']);
+        if (isset($_SESSION['admin'])) {
+            unset($_SESSION['admin']);
         }
         header("Location: /main");
         die();
