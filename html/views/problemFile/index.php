@@ -68,7 +68,7 @@
                         <div class="d-flex w-100 justify-content-between">
                             <h3 class="mb-2"> Información general</h3>
                             <?php if ((!isset($_SESSION['problemSheet'])) || (!in_array($_REQUEST['problem']['id'], array_column($_SESSION['problemSheet'], 'id')))) { ?>
-                                <a href="/addProblem?idProblem=<?= $_REQUEST['problem']['id'] ?>" class="btn btn-outline-danger mb-2" role="button" aria-pressed="true">
+                                <a href="/addProblem?idProblem=<?= urlencode($_REQUEST['problem']['id']) ?>" class="btn btn-outline-danger mb-2" role="button" aria-pressed="true">
                                     Añadir a hoja de problemas <i class="fa fa-plus"></i>
                                 </a>
                             <?php
@@ -102,12 +102,12 @@
                             <div class="col-sm-6 p-0">
                                 <div class="d-flex w-100 flex-column justify-content-between">
                                     <div class="mb-2">
-                                        <a target="_blank" rel="noopener noreferrer" href="/problemPDF?idProblem=<?= $_REQUEST['problem']['id'] ?>&type=State" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
+                                        <a target="_blank" rel="noopener noreferrer" href="/problemPDF?idProblem=<?= urlencode($_REQUEST['problem']['id']) ?>&type=State" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
                                             Descargar enunciado <i class="fa fa-file-pdf-o"></i>
                                         </a>
                                     </div>
                                     <div class="mb-2 ">
-                                        <a target="_blank" rel="noopener noreferrer" href="/problemPDF?idProblem=<?= $_REQUEST['problem']['id'] ?>&type=Full" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
+                                        <a target="_blank" rel="noopener noreferrer" href="/problemPDF?idProblem=<?= urlencode($_REQUEST['problem']['id']) ?>&type=Full" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
                                             Descargar enunciado y soluciones <i class="fa fa-file-pdf-o"></i>
                                         </a>
                                     </div>

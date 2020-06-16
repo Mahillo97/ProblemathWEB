@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
-                <a class="nav-link" href="/search"> Búsqueda <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="<?= $_SESSION['url'] . ($_SESSION['pag']) ?>"> Búsqueda <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/problemSheet">Hoja de problemas</a>

@@ -127,7 +127,7 @@
                     <div class="list-group">
                         <?php
                         foreach ($_REQUEST['problemList'] as $problem) { ?>
-                            <a href="/problemFile?idProblem=<?= $problem['id'] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="/problemFile?idProblem=<?= urlencode($problem['id']) ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1"> Problema <?= $problem['id'] ?> </h5>
                                     <?php if ((!isset($_SESSION['problemSheet'])) || (!in_array($problem['id'], array_column($_SESSION['problemSheet'], 'id')))) { ?>
