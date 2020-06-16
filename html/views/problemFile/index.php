@@ -85,10 +85,10 @@
                         <div class="d-flex w-100 justify-content-between mb-4">
                             <div class="col-sm-6 p-0">
                                 <div class="d-flex w-100 mb-1">
-                                    <h5 class="font-italic"> Propuesto por: <?= $_REQUEST['problem']['proposer'] ?></h5>
+                                    <h5 class="font-italic"> Propuesto por: <?= isset($_REQUEST['problem']['proposer']) ? $_REQUEST['problem']['proposer'] : '-'?></h5>
                                 </div>
                                 <div class="d-flex w-100 mb-1">
-                                    <h5 class="font-italic mr-2">Publicado en: <?= $_REQUEST['problem']['magazine'] ?> </h5>
+                                    <h5 class="font-italic mr-2">Publicado en: <?= isset($_REQUEST['problem']['magazine']) ? $_REQUEST['problem']['magazine'] : '-'?> </h5>
                                 </div>
                                 <div class="d-flex w-100 mb-1">
                                     <?php
@@ -142,6 +142,9 @@
                             <?php
                             foreach ($_REQUEST['problem']['solutions'] as $index => $solution) { ?>
                                 <div class="tab-pane fade" id="solution<?= $index + 1 ?>">
+                                    <div class="d-flex w-100 mb-1">
+                                        <h5 class="font-italic">  Solución enviada por: <?= isset($solution['solver']) ? $solution['solver'] : '-' ?></h5>
+                                    </div>
                                     <p class="mb-1 text-justify tex">
                                         <?= $solution['tex'] ?>
                                     </p>

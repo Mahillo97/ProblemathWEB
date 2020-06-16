@@ -3,3 +3,12 @@
 .btn-no-pointer{
     cursor: default !important;
 }
+
+/* Checkbox color*/
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #DC3545;
+    background-color: #DC3545;
+    outline: none !important;
+    box-shadow: none;
+}

@@ -79,11 +79,13 @@
                                         </div>
                                         <div class="col-sm-11">
                                             <div class="d-flex w-100 justify-content-between">
+                                            <a href="/problemFile?idProblem=<?= urlencode($problem['id']) ?>" class="text-dark" > 
                                                 <h5 class="mb-1"> Problema <?= $problem['id'] ?> </h5>
+                                            </a>
                                             </div>
                                             <div class="d-flex w-100">
-                                                <div class="font-italic mr-2">Propuesto por: <?= $problem['proposer'] ?></div>
-                                                <div class="font-italic mr-2">Publicado en: <?= $problem['magazine'] ?> </div>
+                                                <div class="font-italic mr-2">Propuesto por: <?= isset($problem['proposer']) ? $problem['proposer'] : '-' ?></div>
+                                                <div class="font-italic mr-2">Publicado en: <?= isset($problem['magazine']) ? $problem['magazine'] : '-' ?> </div>
                                             </div>
                                             <?php
                                             foreach ($problem['tags'] as $tag) { ?>
@@ -97,9 +99,9 @@
                                             <div class="d-flex w-100">
                                                 <?php
                                                 foreach ($problem['solutions'] as $index => $solution) { ?>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox<?= $problem['id'] . $index ?>" name="solutions<?= $problem['id'] ?>[]" value="<?= $index ?>" <?= ($solution['selected'] === true) ? "checked" : "" ?>>
-                                                        <label class="form-check-label" for="inlineCheckbox<?= $problem['id'] . $index ?>">Solución <?= $index + 1 ?></label>
+                                                    <div class="custom-control custom-switch">
+                                                        <input class="custom-control-input" type="checkbox" id="inlineCheckbox<?= $problem['id'] . $index ?>" name="solutions<?= $problem['id'] ?>[]" value="<?= $index ?>" <?= ($solution['selected'] === true) ? "checked" : "" ?>>
+                                                        <label class="custom-control-label" for="inlineCheckbox<?= $problem['id'] . $index ?>">Solución <?= $index + 1 ?></label>
                                                     </div>
                                                 <?php
                                                 }
