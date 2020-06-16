@@ -75,9 +75,9 @@ class Admin extends Controller
 
                     //We get the variables that we might send and create the array we must send
                     $petitionArray = [];
-                    $petitionArray['tags'] = isset($_POST['tags']) ? $_POST['tags'] : '';
-                    $petitionArray['prop'] = isset($_POST['prop']) ? $_POST['prop'] : '';
-                    $petitionArray['mag'] = isset($_POST['mag']) ? $_POST['mag'] : '';
+                    $petitionArray['tags'] = isset($_POST['tags']) ? trim($_POST['tags']) : '';
+                    $petitionArray['prop'] = isset($_POST['prop']) ? trim($_POST['prop']) : '';
+                    $petitionArray['mag'] = isset($_POST['mag']) ? trim($_POST['mag']) : '';
 
                     //For the file we rename it and then save it with the new name
                     $oldName = $_FILES['statement']['name'];
