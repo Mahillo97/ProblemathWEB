@@ -24,10 +24,20 @@
 
     <!-- MathJax Scripts -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>
         window.MathJax = {
+            loader: {
+                load: ['[tex]/ams']
+            },
             tex: {
+                macros: {
+                    sen: "{\\sin}",
+                    senh: "{\\sinh}",
+                    tg: "{\\tan}"
+                },
+                packages: {
+                    '[+]': ['ams']
+                },
                 tags: 'ams',
                 inlineMath: [
                     ['$', '$'],
@@ -36,6 +46,7 @@
             }
         };
     </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!--TikzScripts -->
 
@@ -47,7 +58,7 @@
 
     <!-- Own JS -->
     <script type="text/javascript" src="public/js/tabsCollapse.js"></script>
-    <script type="text/javascript" src="public/js/figuresLatex.js"></script>
+    <script type="text/javascript" src="public/js/resizeIframe.js"></script>
 
     <link rel="icon" type="image/png" href="public/img/favicon.png">
 
@@ -85,10 +96,10 @@
                         <div class="d-flex w-100 justify-content-between mb-4">
                             <div class="col-sm-6 p-0">
                                 <div class="d-flex w-100 mb-1">
-                                    <h5 class="font-italic"> Propuesto por: <?= isset($_REQUEST['problem']['proposer']) ? $_REQUEST['problem']['proposer'] : '-'?></h5>
+                                    <h5 class="font-italic"> Propuesto por: <?= isset($_REQUEST['problem']['proposer']) ? $_REQUEST['problem']['proposer'] : '-' ?></h5>
                                 </div>
                                 <div class="d-flex w-100 mb-1">
-                                    <h5 class="font-italic mr-2">Publicado en: <?= isset($_REQUEST['problem']['magazine']) ? $_REQUEST['problem']['magazine'] : '-'?> </h5>
+                                    <h5 class="font-italic mr-2">Publicado en: <?= isset($_REQUEST['problem']['magazine']) ? $_REQUEST['problem']['magazine'] : '-' ?> </h5>
                                 </div>
                                 <div class="d-flex w-100 mb-1">
                                     <?php
@@ -119,9 +130,7 @@
                         </div>
                         <hr class="mt-0 mb-3" />
                         <div class="d-flex w-100 justify-content-between mb-4">
-                            <p class="mb-1 w-100 tex">
-                                <?= $_REQUEST['problem']['tex'] ?>
-                            </p>
+                            <iframe class="mb-1 w-100 tex" frameborder="0" scrolling="no" src="http://<?= constant('IP_API_REST') ?>/v1/users/resource/html/problem/<?= $_REQUEST['problem']['id'] ?>"></iframe>
                         </div>
                         <ul class="nav nav-tabs d-flex align-items-end mb-3">
                             <li class="nav-item mr-auto">
@@ -143,11 +152,9 @@
                             foreach ($_REQUEST['problem']['solutions'] as $index => $solution) { ?>
                                 <div class="tab-pane fade" id="solution<?= $index + 1 ?>">
                                     <div class="d-flex w-100 mb-1">
-                                        <h5 class="font-italic">  Solución enviada por: <?= isset($solution['solver']) ? $solution['solver'] : '-' ?></h5>
+                                        <h5 class="font-italic"> Solución enviada por: <?= isset($solution['solver']) ? $solution['solver'] : '-' ?></h5>
                                     </div>
-                                    <p class="mb-1 text-justify tex">
-                                        <?= $solution['tex'] ?>
-                                    </p>
+                                    <iframe class="mb-1 w-100 tex" frameborder="0" scrolling="no" src="http://<?= constant('IP_API_REST') ?>/v1/users/resource/html/solution/<?= $solution['id'] ?>"></iframe>
                                 </div>
                             <?php
                             }
