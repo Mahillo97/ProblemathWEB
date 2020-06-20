@@ -1,5 +1,6 @@
 window.addEventListener("load",resizeIframe);
 window.addEventListener("resize",resizeIframe);
+window.addEventListener("click",resizeIframe);
 
 function resizeIframe() {
     var list = document.getElementsByClassName("tex");

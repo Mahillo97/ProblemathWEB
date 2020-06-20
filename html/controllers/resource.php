@@ -61,9 +61,6 @@ class Resource extends Controller
         $image = file_get_contents($url);
         $headersArray = parseHeaders($http_response_header);
         if ($headersArray['reponse_code'] == 200) {
-            $imginfo = getimagesize($url);
-            header("Content-type: {$imginfo['mime']}");
-            header('Content-Length: ' . strlen($image));
             die($image);
         } else {
             header("Location: /requestError?code=" . urlencode($headersArray['reponse_code']));
