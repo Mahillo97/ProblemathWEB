@@ -148,7 +148,7 @@
                                     <div class="font-italic mr-2">Propuesto por: <?= $problem['proposer'] ?></div>
                                     <div class="font-italic mr-2">Publicado en: <?= $problem['magazine'] ?> </div>
                                 </div>
-                                <iframe class="mb-1 w-100 tex" frameborder="0" scrolling="no" src="http://<?= constant('IP_API_REST')?>/v1/users/resource/html/problem/<?= $problem['id']?>"></iframe>
+                                <iframe class="mb-1 w-100 tex" frameborder="0" scrolling="no" src="resource/problem?idProblem=<?= urlencode($problem['id'])?>"></iframe>
                                 <?php
                                 foreach ($problem['tags'] as $tag) { ?>
                                     <span class="badge badge-pill badge-danger"><?= $tag ?></span>
