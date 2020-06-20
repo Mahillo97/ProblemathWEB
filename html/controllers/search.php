@@ -9,7 +9,7 @@ class Search extends Controller
 
         parent::__construct();
 
-        $tamPag = 7;
+        $tamPag = 5;
 
         $tags = isset($_GET['auxTags']) ? preg_replace('/\s*,\s*/', ',',trim($_GET['auxTags'])) : '';
         $tags = isset($_GET['tags']) ? preg_replace('/\s*,\s*/', ',',trim($_GET['tags'])) . $tags : $tags . '';
