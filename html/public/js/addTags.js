@@ -1,10 +1,5 @@
 window.addEventListener("load", function () {
-    var ArrayHref = window.location.href.split('/');
-    if(ArrayHref[ArrayHref.length - 2]==="admin"){
-        addTag("primary");
-    }else{
-        addTag("danger");
-    }  
+    addTag("primary");
 }
 );
 

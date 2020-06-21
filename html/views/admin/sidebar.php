@@ -3,7 +3,7 @@
     <!-- Sidebar - Brand -->
     <div class="sidebar-brand d-flex align-items-center justify-content-center">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index">
-            <img src="/public/img/favicon.png" alt="" height="40">
+            <img src="/public/img/portadaarriba.png" alt="" height="40">
             <div class="sidebar-brand-text mx-3">PM Admin </div>
         </a>
     </div>

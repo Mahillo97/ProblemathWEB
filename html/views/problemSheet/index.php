@@ -45,7 +45,7 @@
     <!-- Own JS -->
     <script type="text/javascript" src="public/js/sortable.js"></script>
 
-    <link rel="icon" type="image/png" href="public/img/favicon.png">
+    <link rel="icon" type="image/png" href="public/img/portadaarriba.png">
 
 </head>
 
@@ -73,7 +73,7 @@
                                 <li id="<?= $index ?>" class="list-group-item flex-column align-items-start">
                                     <div class="row w-100">
                                         <div class="col-sm-1">
-                                            <button type="submit" class="btn btn-outline-danger btn-block h-100" name="action" value="delete<?= $index ?>" form="fProblemSheet">
+                                            <button type="submit" class="btn btn-outline-primary btn-block h-100" name="action" value="delete<?= $index ?>" form="fProblemSheet">
                                                 <i class="fa fa-trash-o fa-1x"></i>
                                             </button>
                                         </div>
@@ -89,7 +89,7 @@
                                             </div>
                                             <?php
                                             foreach ($problem['tags'] as $tag) { ?>
-                                                <span class="badge badge-pill badge-danger"><?= $tag ?></span>
+                                                <span class="badge badge-pill badge-primary"><?= $tag ?></span>
                                             <?php
                                             }
                                             ?>
@@ -117,17 +117,17 @@
                         </ul>
                         <div class="d-flex w-100 justify-content-between pt-3 pr-2 pl-2">
                             <div class="w-100">
-                                <a id="search" href="<?= $_SESSION['url'] . ($_SESSION['pag']) ?>" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
+                                <a id="search" href="<?= $_SESSION['url'] . ($_SESSION['pag']) ?>" class="btn btn-outline-primary btn-block" role="button" aria-pressed="true">
                                     Buscar más problemas <i class="fa fa-search"></i>
                                 </a>
                             </div>
                             <div class="w-100">
-                                <button id="save" type="type" class="btn btn-outline-danger btn-block h-100 disabled btn-no-pointer" name="action" value="save" form="fProblemSheet" disabled aria-disabled="true">
+                                <button id="save" type="type" class="btn btn-outline-primary btn-block h-100 disabled btn-no-pointer" name="action" value="save" form="fProblemSheet" disabled aria-disabled="true">
                                     Guardar cambios <i class="fa fa-save"></i>
                                 </button>
                             </div>
                             <div class="w-100">
-                                <button id="pdf" class="btn btn-outline-danger btn-block h-100" name="action" type="submit" value="pdf" formaction="problemSheetPDF" formtarget="_blank">
+                                <button id="pdf" class="btn btn-outline-primary btn-block h-100" name="action" type="submit" value="pdf" formaction="problemSheetPDF" formtarget="_blank">
                                     Descargar hoja de problemas <i class="fa fa-file-pdf-o"></i>
                                 </button>
                             </div>
@@ -136,7 +136,7 @@
                 <?php
                 } else {
                 ?>
-                    <div class="shadow border border-danger rounded p-4">
+                    <div class="shadow border border-primary rounded p-4">
                         <p>Actualmente no dispones de ningún problema, prueba a buscar alguno y añádelo.</p>
                     </div>
                 <?php

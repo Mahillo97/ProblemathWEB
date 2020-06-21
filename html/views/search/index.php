@@ -40,7 +40,7 @@
     <script type="text/javascript" src="public/js/addProblem.js"></script>
     <script type="text/javascript" src="public/js/resizeIframe.js"></script>
 
-    <link rel="icon" type="image/png" href="public/img/favicon.png">
+    <link rel="icon" type="image/png" href="public/img/portadaarriba.png">
 
 </head>
 
@@ -61,7 +61,7 @@
                                 <?php
                                 if ($_SESSION['pag'] > 1) { ?>
                                     <li class="page-item ">
-                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] - 1) ?>">Anterior</a>
+                                        <a class="page-link text-primary" href="<?= $_SESSION['url'] . ($_SESSION['pag'] - 1) ?>">Anterior</a>
                                     </li>
                                 <?php
                                 }
@@ -70,7 +70,7 @@
                                 <?php
                                 if ($_SESSION['pag'] > 2) { ?>
                                     <li class="page-item">
-                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] - 2) ?>"><?= $_SESSION['pag'] - 2 ?></a>
+                                        <a class="page-link text-primary" href="<?= $_SESSION['url'] . ($_SESSION['pag'] - 2) ?>"><?= $_SESSION['pag'] - 2 ?></a>
                                     </li>
                                 <?php
                                 }
@@ -80,20 +80,20 @@
                                 <?php
                                 if ($_SESSION['pag'] > 1) { ?>
                                     <li class="page-item">
-                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] - 1) ?>"><?= $_SESSION['pag'] - 1 ?></a>
+                                        <a class="page-link text-primary" href="<?= $_SESSION['url'] . ($_SESSION['pag'] - 1) ?>"><?= $_SESSION['pag'] - 1 ?></a>
                                     </li>
                                 <?php
                                 }
                                 ?>
 
                                 <li class="page-item ">
-                                    <a class="page-link bg-danger text-white" href="<?= $_SESSION['url'] . ($_SESSION['pag']) ?>"><?= $_SESSION['pag'] ?></a>
+                                    <a class="page-link bg-primary text-white" href="<?= $_SESSION['url'] . ($_SESSION['pag']) ?>"><?= $_SESSION['pag'] ?></a>
                                 </li>
 
                                 <?php
                                 if ($_SESSION['pag'] < $_REQUEST['pages']) { ?>
                                     <li class="page-item">
-                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] + 1) ?>"><?= $_SESSION['pag'] + 1 ?></a>
+                                        <a class="page-link text-primary" href="<?= $_SESSION['url'] . ($_SESSION['pag'] + 1) ?>"><?= $_SESSION['pag'] + 1 ?></a>
                                     </li>
                                 <?php
                                 }
@@ -102,7 +102,7 @@
                                 <?php
                                 if ($_SESSION['pag'] < $_REQUEST['pages'] - 1) { ?>
                                     <li class="page-item">
-                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] + 2) ?>"><?= $_SESSION['pag'] + 2 ?></a>
+                                        <a class="page-link text-primary" href="<?= $_SESSION['url'] . ($_SESSION['pag'] + 2) ?>"><?= $_SESSION['pag'] + 2 ?></a>
                                     </li>
                                 <?php
                                 }
@@ -111,7 +111,7 @@
                                 <?php
                                 if ($_SESSION['pag'] < $_REQUEST['pages']) { ?>
                                     <li class="page-item">
-                                        <a class="page-link text-danger" href="<?= $_SESSION['url'] . ($_SESSION['pag'] + 1) ?>">Siguiente</a>
+                                        <a class="page-link text-primary" href="<?= $_SESSION['url'] . ($_SESSION['pag'] + 1) ?>">Siguiente</a>
                                     </li>
                                 <?php
                                 }
@@ -131,13 +131,13 @@
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1"> Problema <?= $problem['id'] ?> </h5>
                                     <?php if ((!isset($_SESSION['problemSheet'])) || (!in_array($problem['id'], array_column($_SESSION['problemSheet'], 'id')))) { ?>
-                                        <button id="<?= $problem['id'] ?>" class="btn btn-outline-danger addProblem">
+                                        <button id="<?= $problem['id'] ?>" class="btn btn-outline-primary addProblem">
                                             Añadir a hoja de problemas <i class="fa fa-plus"></i>
                                         </button>
                                     <?php
                                     } else {
                                     ?>
-                                        <button id="<?= $problem['id'] ?>" disabled class="btn btn-danger addedProblem">
+                                        <button id="<?= $problem['id'] ?>" disabled class="btn btn-primary addedProblem">
                                             Problema ya añadido <i class="fa fa-file"></i>
                                         </button>
                                     <?php
@@ -151,7 +151,7 @@
                                 <iframe class="mb-1 w-100 tex" frameborder="0" scrolling="no" src="resource/problem?idProblem=<?= urlencode($problem['id'])?>"></iframe>
                                 <?php
                                 foreach ($problem['tags'] as $tag) { ?>
-                                    <span class="badge badge-pill badge-danger"><?= $tag ?></span>
+                                    <span class="badge badge-pill badge-primary"><?= $tag ?></span>
                                 <?php
                                 }
                                 ?>

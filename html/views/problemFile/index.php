@@ -60,7 +60,7 @@
     <script type="text/javascript" src="public/js/tabsCollapse.js"></script>
     <script type="text/javascript" src="public/js/resizeIframe.js"></script>
 
-    <link rel="icon" type="image/png" href="public/img/favicon.png">
+    <link rel="icon" type="image/png" href="public/img/portadaarriba.png">
 
 </head>
 
@@ -74,18 +74,18 @@
             </div>
             <div class=" rounded col-sm-6 text-left">
                 <h1>PROBLEMA <?= $_REQUEST['problem']['id'] ?></h1>
-                <div class="shadow border border-danger rounded p-3">
+                <div class="shadow border border-primary rounded p-3">
                     <div class="flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h3 class="mb-2"> Información general</h3>
                             <?php if ((!isset($_SESSION['problemSheet'])) || (!in_array($_REQUEST['problem']['id'], array_column($_SESSION['problemSheet'], 'id')))) { ?>
-                                <a href="/addProblem?idProblem=<?= urlencode($_REQUEST['problem']['id']) ?>" class="btn btn-outline-danger mb-2" role="button" aria-pressed="true">
+                                <a href="/addProblem?idProblem=<?= urlencode($_REQUEST['problem']['id']) ?>" class="btn btn-outline-primary mb-2" role="button" aria-pressed="true">
                                     Añadir a hoja de problemas <i class="fa fa-plus"></i>
                                 </a>
                             <?php
                             } else {
                             ?>
-                                <button id="<?= $_REQUEST['problem']['id'] ?>" disabled class="btn btn-danger mb-2 btn-no-pointer">
+                                <button id="<?= $_REQUEST['problem']['id'] ?>" disabled class="btn btn-primary mb-2 btn-no-pointer">
                                     Problema ya añadido <i class="fa fa-file"></i>
                                 </button>
                             <?php
@@ -93,7 +93,7 @@
                             ?>
                         </div>
                         <hr class="mt-0 mb-3" />
-                        <div class="d-flex w-100 justify-content-between mb-4">
+                        <div class="d-flex w-100 justify-content-between mb-1">
                             <div class="col-sm-6 p-0">
                                 <div class="d-flex w-100 mb-1">
                                     <h5 class="font-italic"> Propuesto por: <?= isset($_REQUEST['problem']['proposer']) ? $_REQUEST['problem']['proposer'] : '-' ?></h5>
@@ -101,29 +101,29 @@
                                 <div class="d-flex w-100 mb-1">
                                     <h5 class="font-italic mr-2">Publicado en: <?= isset($_REQUEST['problem']['magazine']) ? $_REQUEST['problem']['magazine'] : '-' ?> </h5>
                                 </div>
-                                <div class="d-flex w-100 mb-1">
-                                    <?php
-                                    foreach ($_REQUEST['problem']['tags'] as $tag) { ?>
-                                        <span class="badge badge-danger mr-1"><?= $tag ?></span>
-                                    <?php
-                                    }
-                                    ?>
-                                </div>
                             </div>
                             <div class="col-sm-6 p-0">
                                 <div class="d-flex w-100 flex-column justify-content-between">
                                     <div class="mb-2">
-                                        <a target="_blank" rel="noopener noreferrer" href="/problemPDF?idProblem=<?= urlencode($_REQUEST['problem']['id']) ?>&type=State" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
+                                        <a target="_blank" rel="noopener noreferrer" href="/problemPDF?idProblem=<?= urlencode($_REQUEST['problem']['id']) ?>&type=State" class="btn btn-outline-primary btn-block" role="button" aria-pressed="true">
                                             Descargar enunciado <i class="fa fa-file-pdf-o"></i>
                                         </a>
                                     </div>
                                     <div class="mb-2 ">
-                                        <a target="_blank" rel="noopener noreferrer" href="/problemPDF?idProblem=<?= urlencode($_REQUEST['problem']['id']) ?>&type=Full" class="btn btn-outline-danger btn-block" role="button" aria-pressed="true">
+                                        <a target="_blank" rel="noopener noreferrer" href="/problemPDF?idProblem=<?= urlencode($_REQUEST['problem']['id']) ?>&type=Full" class="btn btn-outline-primary btn-block" role="button" aria-pressed="true">
                                             Descargar enunciado y soluciones <i class="fa fa-file-pdf-o"></i>
                                         </a>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="w-100 mb-1">
+                            <?php
+                            foreach ($_REQUEST['problem']['tags'] as $tag) { ?>
+                                <span class="badge badge-primary mr-1"><?= $tag ?></span>
+                            <?php
+                            }
+                            ?>
                         </div>
                         <div class="d-flex w-100 justify-content-between">
                             <h3 class="mb-2"> Enunciado</h3>
@@ -140,7 +140,7 @@
                             <?php
                             foreach ($_REQUEST['problem']['solutions'] as $index => $solution) { ?>
                                 <li class="nav-item">
-                                    <a class="nav-link text-danger" data-toggle="tab" href="#solution<?= $index + 1 ?>" data-target="#solution<?= $index + 1 ?>">Solución <?= $index + 1 ?> </a>
+                                    <a class="nav-link text-primary" data-toggle="tab" href="#solution<?= $index + 1 ?>" data-target="#solution<?= $index + 1 ?>">Solución <?= $index + 1 ?> </a>
                                 </li>
                             <?php
                             }

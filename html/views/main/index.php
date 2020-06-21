@@ -25,7 +25,7 @@
     <!-- Own JS -->
     <script type="text/javascript" src="public/js/addTags.js"></script>
 
-    <link rel="icon" type="image/png" href="public/img/favicon.png">
+    <link rel="icon" type="image/png" href="public/img/portadaarriba.png">
 
 </head>
 
@@ -38,8 +38,8 @@
             <div class="col-sm-3 sidenav">
             </div>
             <div class=" rounded col-sm-6 text-left">
-                <h1 class="text-center">PROBLEMATH</h1>
-                <div class="shadow border border-danger rounded p-4">
+                <img class="mx-auto d-block mb-4" src="/public/img/portadamedio.png" alt="">
+                <div class="shadow border border-primary rounded p-4">
 
                     <form name="fProblems" id="fProblems" action="search">
                         <div class="form-group row">
@@ -70,7 +70,7 @@
 
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-danger" value="Buscar">Buscar</button>
+                                <button type="submit" class="btn btn-primary" value="Buscar">Buscar</button>
                             </div>
                         </div>
                     </form>
