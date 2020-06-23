@@ -28,6 +28,13 @@
     <script>
         window.MathJax = {
             tex: {
+                macros: {
+                    sen: ["\\operatorname\{sen\}"],
+                    tg: ["\\operatorname\{tg\}"],
+                    senh: ["\\operatorname\{senh\}"],
+                    cosh: ["\\operatorname\{cosh\}"],
+                    cosec: ["\\operatorname\{cosec\}"]
+                },
                 inlineMath: [
                     ['$', '$'],
                     ['\\(', '\\)']
@@ -40,7 +47,7 @@
     <script type="text/javascript" src="public/js/addProblem.js"></script>
     <script type="text/javascript" src="public/js/figuresLatex.js"></script>
 
-    <link rel="icon" type="image/png" href="public/img/portadaarriba.png">
+    <link rel="icon" type="image/png" href="public/img/favicon.png">
 
 </head>
 

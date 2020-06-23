@@ -1,10 +1,10 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark accordion color-sidebar" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <div class="sidebar-brand d-flex align-items-center justify-content-center">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index">
-            <img src="/public/img/portadaarriba.png" alt="" height="40">
-            <div class="sidebar-brand-text mx-3">PM Admin </div>
+            <img src="/public/img/logoAdmin.png" alt="" height="40">
+            <div class="sidebar-brand-text mx-3"> </div>
         </a>
     </div>
 

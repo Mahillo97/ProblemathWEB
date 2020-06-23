@@ -45,7 +45,7 @@
     <!-- Own JS -->
     <script type="text/javascript" src="public/js/sortable.js"></script>
 
-    <link rel="icon" type="image/png" href="public/img/portadaarriba.png">
+    <link rel="icon" type="image/png" href="public/img/favicon.png">
 
 </head>
 

@@ -31,9 +31,11 @@
             },
             tex: {
                 macros: {
-                    sen: "{\\sin}",
-                    senh: "{\\sinh}",
-                    tg: "{\\tan}"
+                    sen: ["\\operatorname\{sen\}"],
+                    tg: ["\\operatorname\{tg\}"],
+                    senh: ["\\operatorname\{senh\}"],
+                    cosh: ["\\operatorname\{cosh\}"],
+                    cosec: ["\\operatorname\{cosec\}"]
                 },
                 packages: {
                     '[+]': ['ams']
@@ -60,7 +62,7 @@
     <script type="text/javascript" src="public/js/tabsCollapse.js"></script>
     <script type="text/javascript" src="public/js/figuresLatex.js"></script>
 
-    <link rel="icon" type="image/png" href="public/img/portadaarriba.png">
+    <link rel="icon" type="image/png" href="public/img/favicon.png">
 
 </head>
 
