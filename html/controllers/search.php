@@ -1,13 +1,29 @@
 
 <?php
 
+require_once "vendor/autoload.php";
+use Pandoc\Pandoc;
+
 class Search extends Controller
 {
+
+    private static $pandoc;
+    private static $optionsP;
+    static function init()
+    {
+        self::$pandoc = new Pandoc();
+        self::$optionsP = array(
+            "from"  => "latex",
+            "to"    => "html",
+            "mathjax" => null
+        );
+    }
 
     function __construct()
     {
 
         parent::__construct();
+        self::init();
 
         $tamPag = 5;
 
@@ -43,8 +59,10 @@ class Search extends Controller
                             if ($headersArray['reponse_code'] == 200) {
                                 $problemList = json_decode($problemsJSON, true)['problems'];
                                 $_REQUEST['problemList'] = $problemList;
+                                $_REQUEST['pandoc'] = self::$pandoc;
+                                $_REQUEST['pandocOptions'] = self::$optionsP;
                                 $_SESSION['pag'] = $pag;
-                                $_SESSION['url'] = $newUrl;
+                                $_SESSION['url'] = $newUrl;                             
                             } else {
                                 header("Location: requestError?code=" . urlencode($headersArray['reponse_code']));
                                 die();

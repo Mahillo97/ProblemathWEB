@@ -58,7 +58,7 @@
 
     <!-- Own JS -->
     <script type="text/javascript" src="public/js/tabsCollapse.js"></script>
-    <script type="text/javascript" src="public/js/resizeIframe.js"></script>
+    <script type="text/javascript" src="public/js/figuresLatex.js"></script>
 
     <link rel="icon" type="image/png" href="public/img/portadaarriba.png">
 
@@ -130,7 +130,9 @@
                         </div>
                         <hr class="mt-0 mb-3" />
                         <div class="d-flex w-100 justify-content-between mb-4">
-                        <iframe class="mb-1 w-100 tex" frameborder="0" scrolling="no" src="resource/problem?idProblem=<?= urlencode($_REQUEST['problem']['id'])?>"></iframe>
+                        <div class="mb-1 w-100 tex">
+                                        <?= $_REQUEST['pandoc']->runWith($_REQUEST['problem']['tex'], $_REQUEST['pandocOptions']);?>
+                                    </div>
                         </div>
                         <ul class="nav nav-tabs d-flex align-items-end mb-3">
                             <li class="nav-item mr-auto">
@@ -154,7 +156,9 @@
                                     <div class="d-flex w-100 mb-1">
                                         <h5 class="font-italic"> Solución enviada por: <?= isset($solution['solver']) ? $solution['solver'] : '-' ?></h5>
                                     </div>
-                                    <iframe class="mb-1 w-100 tex" frameborder="0" scrolling="no" src="resource/solution?idSolution=<?= urlencode($solution['id'])?>"></iframe>
+                                    <div class="mb-1 w-100 tex">
+                                        <?= $_REQUEST['pandoc']->runWith($solution['tex'], $_REQUEST['pandocOptions']);?>
+                                    </div>
                                 </div>
                             <?php
                             }
