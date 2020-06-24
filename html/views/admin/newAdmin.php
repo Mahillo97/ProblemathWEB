@@ -24,7 +24,7 @@
 
     <!-- Own CSS-->
     <link href="/public/css/dashboard.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/public/img/portadaarriba.png">
+    <link rel="icon" type="image/png" href="/public/img/favicon.png">
 
     <!-- Own JS -->
     <script type="text/javascript" src="/public/js/showFilename.js"></script>

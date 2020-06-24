@@ -28,6 +28,13 @@
     <script>
         window.MathJax = {
             tex: {
+                macros: {
+                    sen: ["\\operatorname\{sen\}"],
+                    tg: ["\\operatorname\{tg\}"],
+                    senh: ["\\operatorname\{senh\}"],
+                    cosh: ["\\operatorname\{cosh\}"],
+                    cosec: ["\\operatorname\{cosec\}"]
+                },
                 inlineMath: [
                     ['$', '$'],
                     ['\\(', '\\)']
@@ -38,9 +45,9 @@
 
     <!-- Own JS -->
     <script type="text/javascript" src="public/js/addProblem.js"></script>
-    <script type="text/javascript" src="public/js/resizeIframe.js"></script>
+    <script type="text/javascript" src="public/js/figuresLatex.js"></script>
 
-    <link rel="icon" type="image/png" href="public/img/portadaarriba.png">
+    <link rel="icon" type="image/png" href="public/img/favicon.png">
 
 </head>
 
@@ -148,7 +155,9 @@
                                     <div class="font-italic mr-2">Propuesto por: <?= $problem['proposer'] ?></div>
                                     <div class="font-italic mr-2">Publicado en: <?= $problem['magazine'] ?> </div>
                                 </div>
-                                <iframe class="mb-1 w-100 tex" frameborder="0" scrolling="no" src="resource/problem?idProblem=<?= urlencode($problem['id'])?>"></iframe>
+                                <div class="mb-1 w-100 tex">
+                                    <?= $_REQUEST['pandoc']->runWith($problem['tex'], $_REQUEST['pandocOptions'])?>
+                                </div>
                                 <?php
                                 foreach ($problem['tags'] as $tag) { ?>
                                     <span class="badge badge-pill badge-primary"><?= $tag ?></span>

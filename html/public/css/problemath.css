@@ -7,8 +7,8 @@
 /* Checkbox color*/
 .custom-control-input:checked~.custom-control-label::before {
     color: #fff;
-    border-color: #DC3545;
-    background-color: #DC3545;
+    border-color: #007bff;
+    background-color: #007bff;
     outline: none !important;
     box-shadow: none;
 }
