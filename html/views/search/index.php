@@ -173,7 +173,7 @@
                 } else {
                 ?>
 
-                    <div class="shadow border rounded p-4">
+                    <div class="shadow border border-primary rounded p-4">
                         <p>No se encontró ningún problema para la búsqueda realizada.</p>
                     </div>
                 <?php
