@@ -18,7 +18,7 @@ function embedFigure() {
 
         //We create an image tag
         var image = document.createElement("img");
-        image.src = `http://192.168.56.101:5000/v1/users/dependency/${ID}`;
+        image.src = `/dependency?idImage=${ID}`;
         image.style.width = width;
 
         //We replace the embed tag with the new image
@@ -49,7 +49,7 @@ function embedNoFigure() {
 
             //We create an image tag
             var image = document.createElement("img");
-            image.src = `http://192.168.56.101:5000/v1/users/dependency/${ID}`;
+            image.src = `/dependency?idImage=${ID}`;
             image.classList.add("d-block", "mx-auto");
             image.style.width = width;
 
