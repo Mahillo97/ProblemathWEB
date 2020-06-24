@@ -1,8 +1,7 @@
-document.addEventListener("readystatechange", figuresEmbed);
-document.addEventListener("readystatechange", centerLatex);
-document.addEventListener("readystatechange", centerTikz);
+document.addEventListener("readystatechange", embedFigure);
+document.addEventListener("readystatechange", embedNoFigure);
 
-function figuresEmbed() {
+function embedFigure() {
     var listFigures = document.getElementsByClassName("figure");
     for (var index in listFigures) {
         //First we center the image
@@ -39,19 +38,24 @@ function figuresEmbed() {
     }
 }
 
-function centerLatex() {
-    var list = document.getElementsByClassName("tex");
-    for (var _p of list) {
-        var regEx = new RegExp(/\\begin{center}((.|\n|\r)*?)\\includegraphics(\[(?:.*)\])?{(.*)\/([0-9]*)\.(.*)}((.|\n|\r)*?)\\end{center}/, "g");
-        _p.innerHTML = _p.innerHTML.replace(regEx, `<img class="mt-3 mb-3 mx-auto d-block img-fluid" src="http://192.168.56.101:5000/v1/users/dependency/$5">`);
-    }
-}
+function embedNoFigure() {
+    var listFigures = document.getElementsByTagName("embed");
+    for (var embed of listFigures) {
+        if (!embed.parentElement.classList.contains("figure")) {
+            //We get the data from the embed file
+            var filename = embed.getAttribute("src");
+            var width = embed.style.width;
+            var ID = getID(filename);
 
-function centerTikz() {
-    var list = document.getElementsByClassName("tex");
-    for (var _p of list) {
-        var regEx = new RegExp(/\\begin{center}((.|\n|\r)*?)(\\begin(\[(?:.*)\])?{tikzpicture}((.|\n|\r)*?))\\end{center}/, "g");
-        _p.innerHTML = _p.innerHTML.replace(regEx, `<div class="mt-3 mb-3 row justify-content-center"><script type="text/tikz"> $3 </script></div>`);
+            //We create an image tag
+            var image = document.createElement("img");
+            image.src = `http://192.168.56.101:5000/v1/users/dependency/${ID}`;
+            image.classList.add("d-block", "mx-auto");
+            image.style.width = width;
+
+            //We replace the embed tag with the new image
+            embed.replaceWith(image);
+        }
     }
 }
 
@@ -61,5 +65,5 @@ function getID(path) {
 }
 
 function escapePath(str) {
-    return str.replace(/\//g,"\\/");
+    return str.replace(/\//g, "\\/");
 }
