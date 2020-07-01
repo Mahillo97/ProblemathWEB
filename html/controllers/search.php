@@ -30,7 +30,7 @@ class Search extends Controller
         $tags = isset($_GET['auxTags']) ? preg_replace('/\s*,\s*/', ',',trim($_GET['auxTags'])) : '';
         $tags = isset($_GET['tags']) ? preg_replace('/\s*,\s*/', ',',trim($_GET['tags'])) . $tags : $tags . '';
         $prop = isset($_GET['prop']) ? trim($_GET['prop']) : '';
-        $mag = isset($_POST['mag']) ? trim($_POST['mag']) : '';
+        $mag = isset($_GET['mag']) ? trim($_GET['mag']) : '';
 
         $urlPeticionSize = "http://".constant('IP_API_REST')."/v1/users/problems/size?tags=".urlencode($tags)."&mag=".urlencode($mag)."&prop=".urlencode($prop);
         $newUrl = "search?tags=".urlencode($tags)."&mag=".urlencode($mag)."&prop=".urlencode($prop)."&pag=";
