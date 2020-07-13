@@ -9,6 +9,7 @@
     <meta name="language" content="es-ES">
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="96T0O5IUoQ7iwnGNapOGJyPOSUVaFtHKokGHHDwCrZw" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- FontAwesome CSS -->
